@@ -1,0 +1,14 @@
+
+
+<table><tbody>
+<% @moderators.each_with_index do |moderator, index| %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= moderator.login %></td>
+      <td><%= moderator.name  %></td>
+      <td>
+        <%= link_to 'Удалить', admin_moderator_path(moderator), method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-outline-danger btn-sm'  %>
+      </td>
+    </tr>
+<% end %>
+</tbody></table>

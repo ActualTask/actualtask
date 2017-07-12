@@ -1,0 +1,7 @@
+<h1><%= t('.title') %></h1>
+<% if current_user.moderator? %>
+<section id='tasks'>
+  <%= render @tasks %>
+</section>
+<%= will_paginate @tasks, renderer: 'BootstrapPaginationHelper::LinkRenderer' %>
+<% end %>

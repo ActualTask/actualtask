@@ -1,0 +1,7 @@
+
+    <%= form_for [:moderate, @task], {action: 'update'} do |f| %>
+    <%= f.radio_button :tasks_verified, "verified" %> <%= f.label :Verify %>
+    <%= f.radio_button :tasks_verified, "declined" %> <%= f.label :Decline %>
+    <%= f.radio_button :tasks_verified, "to_change" %> <%= f.label :To_change %><br>
+        <%= f.submit 'Submit' %>
+<% end %>

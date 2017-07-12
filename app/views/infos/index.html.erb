@@ -1,0 +1,30 @@
+<h1>Личный кабинет</h1>
+<%# t.text "name"
+    t.text "surname"
+    t.text "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "dob"
+    t.text "about"
+    t.string "location" %>
+<% if user_signed_in? %>
+    <% if current_user.info.nil?%>
+        <%= link_to 'Заполнить личные данные', new_info_path, class: 'btn btn-outline-primary btn-sm' %>
+    <% else %>
+        <%= current_user.info.name %>
+        <%= current_user.info.surname %>
+        <div><%= current_user.info.about %></div>
+    <% end %>
+    <% if current_user.performer.nil? %>
+        <%= link_to 'Загрузить фото', new_performer_path, class: 'btn btn-outline-primary btn-sm'  %>
+    <% else %>
+
+
+<% end %>
+<% end %>
+
+
+
+
+
+

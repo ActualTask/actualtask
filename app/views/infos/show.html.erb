@@ -1,0 +1,8 @@
+<h1>Анкета</h1>
+<article class="anketa">
+  <% if user_signed_in? && current_user.id==@info.user_id %>
+    <h1><%= @info %></h1>
+  </article>
+
+
+<% end %>
