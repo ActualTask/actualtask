@@ -19,5 +19,8 @@
 
 /node_modules
 /yarn-error.log
-
 .byebug_history
+
+#ignore logs and workspace
+passenger*
+.idea/workspace.xml
