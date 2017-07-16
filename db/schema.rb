@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713145207) do
+ActiveRecord::Schema.define(version: 20170716210752) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -36,15 +36,22 @@ ActiveRecord::Schema.define(version: 20170713145207) do
     t.datetime "updated_at", null: false
     t.date "dob"
     t.text "about"
-    t.string "location"
+    t.integer "location_id"
     t.integer "user_id"
   end
 
   create_table "locations", force: :cascade do |t|
-    t.integer "task_id"
-    t.string "lat"
-    t.string "long"
+    t.float "latitude"
+    t.float "longitude"
     t.string "location_name"
+    t.string "address"
+    t.string "country_code"
+    t.string "country"
+    t.string "city"
+    t.string "state"
+    t.string "postal_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "moderators", force: :cascade do |t|
@@ -83,7 +90,10 @@ ActiveRecord::Schema.define(version: 20170713145207) do
     t.integer "task_id"
     t.integer "performer_id"
     t.text "response_text"
+    t.decimal "price"
     t.string "response_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "responses", force: :cascade do |t|
@@ -128,7 +138,7 @@ ActiveRecord::Schema.define(version: 20170713145207) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
+    t.string "attachments"
     t.integer "category_id"
     t.integer "user_id"
     t.decimal "price_max"
