@@ -17,13 +17,14 @@ class InfosController < ApplicationController
 
   def create
 
+    render plain: info_params
     @info = Info.new(info_params)
     @location = Location.new(location_params)
     @info.user_id = current_user.id
     if @location.save
       @info.location_id = @location.id
       if @info.save
-        redirect_to @info, success: 'Анкета успешно создана'
+        redirect_to infos_path, success: 'Анкета успешно создана'
       else
         flash.now[:danger]= 'Анкета не создана'
         render :new

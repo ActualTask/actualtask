@@ -23,7 +23,7 @@
 
     <div class="form-group">
       <%= f.label :dob %>
-      <%= f.date_select :dob, class: 'form-control' %>
+      <%= f.date_select :dob, :order => [:day, :month, :year], :start_year => 1940, :end_year => Date.today.year - 14, class: 'form-control' %>
     </div>
 
     <div class="form-group">

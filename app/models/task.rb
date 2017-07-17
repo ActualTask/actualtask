@@ -10,7 +10,7 @@ class Task < ApplicationRecord
   has_many :pictures #files through attachments
 
 
-  validates :title, :summary, :body, presence: true
+  validates :title, :body, presence: true
 
   def all_tags
     self.tags.map(&:name).join(', ')
