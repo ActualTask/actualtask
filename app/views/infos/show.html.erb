@@ -1,8 +1,9 @@
 <h1>Анкета</h1>
 <article class="anketa">
   <% if user_signed_in? && current_user.id==@info.user_id %>
-    <h1><%= @location.city+' '+@location.country %></h1>
-  </article>
+      <div><%= @info.name+' '+@info.surname %></div>
+      <div><%= @location.city+' '+@location.country %></div>
+      <div><%= @info.about %></div>
+  <% end %>
+</article>
 
-
-<% end %>

@@ -17,8 +17,8 @@ class InfosController < ApplicationController
 
   def create
 
-    @info = Info.new(info_params[:info])
-    @location = Location.new(:address => params[:location][:address])
+    @info = Info.new(info_params)
+    @location = Location.new(location_params)
     @info.user_id = current_user.id
     if @location.save
       @info.location_id = @location.id
@@ -41,5 +41,7 @@ end
 
 def info_params
   params.require(:info).permit(:name, :surname, :dob, :about, :phone)
+end
+def location_params
   params.require(:location).permit(:address)
 end
