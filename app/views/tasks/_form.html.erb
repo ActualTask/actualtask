@@ -15,15 +15,29 @@
   <%= f.text_field :title, class: 'form-control' %>
 </div>
 
-    <div class="form-group">
-      <%= f.label :summary %>
-      <%= f.text_area :summary, class: 'form-control' %>
-    </div>
 
     <div class="form-group">
       <%= f.label :body %>
       <%= f.trix_editor :body, class: 'editor' %>
     </div>
+
+    <div class="form-group">
+      <%= f.label :start_time %>
+      <%= f.datetime_select  :start_time, start_year: 2017, selected: Date.today,  class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :end_time %>
+      <%= f.datetime_select :end_time, start_year: 2017, selected: Date.today, class: 'form-control' %>
+    </div>
+
+
+
+    <div class="form-group">
+      <%= f.label :price %>
+      <%= f.text_field :price_max, class: 'form-control' %>
+    </div>
+
 
     <div class="form-group">
       <%= f.label :category_id %>
