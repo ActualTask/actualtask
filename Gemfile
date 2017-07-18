@@ -26,6 +26,7 @@ gem 'acts_as_commentable_with_threading'
 gem 'closure_tree'
 # Use geocoder for locations
 gem 'geocoder'
+gem 'jquery-rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 gem 'will_paginate', '~> 3.1.0'
@@ -45,6 +46,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+gem 'nested_form_fields'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

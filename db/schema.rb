@@ -10,23 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170716210752) do
-
+ActiveRecord::Schema.define(version: 20170717161931) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.string "commenter"
-    t.text "body"
-    t.integer "task_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["task_id"], name: "index_comments_on_task_id"
   end
 
   create_table "infos", force: :cascade do |t|
@@ -81,12 +71,6 @@ ActiveRecord::Schema.define(version: 20170716210752) do
     t.string "photo_id_2"
   end
 
-  create_table "pictures", force: :cascade do |t|
-    t.string "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "response_lists", force: :cascade do |t|
     t.integer "task_id"
     t.integer "performer_id"
@@ -131,6 +115,11 @@ ActiveRecord::Schema.define(version: 20170716210752) do
 
   create_table "task_attachments", force: :cascade do |t|
     t.integer "task_id"
+  end
+
+  create_table "task_locating", force: :cascade do |t|
+    t.integer "task_id"
+    t.integer "location_id"
   end
 
   create_table "tasks", force: :cascade do |t|

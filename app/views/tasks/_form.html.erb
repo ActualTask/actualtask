@@ -38,6 +38,15 @@
       <%= f.text_field :price_max, class: 'form-control' %>
     </div>
 
+    <div class="form-group">
+      <%= f.nested_fields_for :locations do |l| %>
+          <%= l.remove_nested_fields_link %>
+        <%= l.label :address %>
+        <%= l.text_field :address %>
+      <% end %>
+      <%= f.add_nested_fields_link :locations %>
+    </div>
+
 
     <div class="form-group">
       <%= f.label :category_id %>

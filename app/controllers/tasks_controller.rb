@@ -13,11 +13,11 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = Task.new
+    @task = Task.new (task_locations_params)
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = Task.new(task_params, task_locations_params)
     @task.user_id=current_user.id
     @task.tasks_verified = 'created'
     if @task.save
@@ -33,7 +33,7 @@ class TasksController < ApplicationController
   end
 
   def update
-  if @task.update_attributes(task_params)
+  if @task.update_attributes(task_params, task_locations_params)
     redirect_to @task, success: 'Задание обновлено'
   else
     flash.now[:danger] = 'Задание не обновлено'
@@ -53,6 +53,10 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :body, :images, :all_tags, :category_id)
+    params.require(:task).permit(:title, :body, :images, :all_tags, :category_id )
+  end
+
+  def task_locations_params
+    params.require :locations_attributes=>[:address, :_destroy, :id]
   end
 end
