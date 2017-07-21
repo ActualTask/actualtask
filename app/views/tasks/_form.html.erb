@@ -12,13 +12,13 @@
 <%= form_for @task, html: { multipart: true }  do |f| %>
 <div class="form-group">
   <%= f.label :title %>
-  <%= f.text_field :title, class: 'form-control' %>
+  <%= f.text_field :title, placeholder: "Введите имя задания", class: 'form-control' %>
 </div>
 
 
     <div class="form-group">
       <%= f.label :body %>
-      <%= f.trix_editor :body, class: 'editor' %>
+      <%= f.trix_editor :body, placeholder: "Описание задания", class: 'editor' %>
     </div>
 
     <div class="form-group">
@@ -35,16 +35,17 @@
 
     <div class="form-group">
       <%= f.label :price %>
-      <%= f.text_field :price_max, class: 'form-control' %>
+      <%= f.text_field :price_max, placeholder: "Цена", class: 'form-control' %>
     </div>
 
     <div class="form-group">
       <%= f.nested_fields_for :locations do |l| %>
           <%= l.remove_nested_fields_link %>
         <%= l.label :address %>
-        <%= l.text_field :address %>
+        <%= l.text_field :address, placeholder: "Введите адресс" %>
       <% end %>
       <%= f.add_nested_fields_link :locations %>
+      <%= debug @locations %>
     </div>
 
 

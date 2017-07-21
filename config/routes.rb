@@ -20,12 +20,19 @@ Rails.application.routes.draw do
     root 'tasks#index'
 
 
-    resources :tasks
+    resources :tasks do
+      patch 'add_response', action: :add_response, controller: 'tasks'
+    end
+    #custom route for task_controller.responses
     resources :tags, only: [:show]
     resources :categories, only: [:show]
-    resources :infos
+    resources :infos, only: [:show]
     resources :performers
     resources :comments
+
+    namespace :myprofile do
+      resources :infos, except: [:destroy]
+    end
 
 
     namespace :moderate do
@@ -35,7 +42,6 @@ Rails.application.routes.draw do
     end
 
     namespace :admin do
-      #Убрать админа, не забудь вынести пути и переделать контроллер
       resources :categories, except: [:show]
       resources :pictures, only: [:create, :destroy]
       resources :tasks

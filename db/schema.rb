@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717161931) do
+ActiveRecord::Schema.define(version: 20170719120146) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 20170717161931) do
     t.integer "task_id"
   end
 
-  create_table "task_locating", force: :cascade do |t|
+  create_table "task_locatings", force: :cascade do |t|
     t.integer "task_id"
     t.integer "location_id"
   end

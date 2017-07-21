@@ -1,10 +1,11 @@
 class Location < ApplicationRecord
   has_many :infos
+  has_many :task_locatings, inverse_of: :location
+  has_many :tasks, through: :task_locatings
   geocoded_by :address do |obj,results|
     if geo = results.first
       obj.latitude = geo.latitude
       obj.longitude = geo.longitude
-      obj.location_name = obj.address
       obj.address = geo.address
       obj.city    = geo.city
       obj.postal_code = geo.postal_code
@@ -17,7 +18,6 @@ class Location < ApplicationRecord
     if geo = results.first
       obj.latitude = geo.latitude
       obj.longitude = geo.longitude
-      obj.location_name = geo.address
       obj.address = geo.address
       obj.city    = geo.city
       obj.postal_code = geo.postal_code

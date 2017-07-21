@@ -1,36 +1,5 @@
 class InfosController < ApplicationController
 
-  def index
-    #@performers = Performer.new
-    @infos = Info.new
-  end
-
-  def new
-    @info = Info.new
-    @location = Location.new
-  end
-
-  def edit
-
-  end
-
-
-  def create
-
-    render plain: info_params
-    @info = Info.new(info_params)
-    @location = Location.new(location_params)
-    @info.user_id = current_user.id
-    if @location.save
-      @info.location_id = @location.id
-      if @info.save
-        redirect_to infos_path, success: 'Анкета успешно создана'
-      else
-        flash.now[:danger]= 'Анкета не создана'
-        render :new
-      end
-    end
-  end
 
   def show
     @info = Info.find(params[:id])
@@ -46,3 +15,4 @@ end
 def location_params
   params.require(:location).permit(:address)
 end
+

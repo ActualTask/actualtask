@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :tasks
   has_one :performer
   has_one :info
-  has_many :responses
+  has_many :responselists, class_name: 'ResponseList', primary_key: 'id', foreign_key: 'performer_id'
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|

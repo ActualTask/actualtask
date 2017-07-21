@@ -8,12 +8,17 @@ class Task < ApplicationRecord
   has_many :responses
   has_many :comments
   has_many :pictures #files through attachments
-  has_many :task_locating, dependent: :destroy #locations
-  has_many :locations, through:  :task_locating
+  has_many :task_locatings, dependent: :destroy #locations
+  has_many :locations, through:  :task_locatings
   accepts_nested_attributes_for :locations
+  accepts_nested_attributes_for :responses
 
 
 
+
+
+
+  validates_associated :locations
   validates :title, :body, presence: true
 
   def all_tags
