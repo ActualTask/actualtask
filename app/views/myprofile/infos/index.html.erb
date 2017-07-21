@@ -9,19 +9,35 @@
     t.string "location" %>
 <% if user_signed_in? %>
     <% if current_user.performer.nil? %>
+        <div><%= link_to 'Мои задания', myprofile_customer_tasks_path, class: 'btn btn-outline-primary btn-sm' %></div>
         <div> <%= link_to 'Загрузить фото', new_performer_path, class: 'btn btn-outline-primary btn-sm'  %></div>
     <% if current_user.info.nil?%>
-        <%= link_to 'Заполнить личные данные', new_info_path, class: 'btn btn-outline-primary btn-sm' %>
+        <%= link_to 'Заполнить личные данные', new_myprofile_infos_path, class: 'btn btn-outline-primary btn-sm' %>
     <% else %>
-           <%= link_to'Профиль', my_profile_infos_path, class: 'btn btn-outline-primary btn-sm'  %>
         <%= current_user.info.name %>
         <%= current_user.info.surname %>
         <div><%= current_user.info.about %></div>
     <% end %>
 
+        <section id="tasks">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Название</th>
+              <th>Категория родитель</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
 
 
-<% end %>
+            <% end %>
+            </tbody>
+          </table>
+        </section>
+
+
+
 <% end %>
 
 

@@ -1,0 +1,70 @@
+<% if @task.errors.any? %>
+    <div class="alert alert-danger">
+      <h5><%= t('common.errors') %></h5>
+      <ul>
+        <% @task.errors.full_messages.each do |message|  %>
+        <li><%= message %></li>
+            <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+<%= form_for @task, html: { multipart: true }  do |f| %>
+<div class="form-group">
+  <%= f.label :title %>
+  <%= f.text_field :title, placeholder: "Введите имя задания", class: 'form-control' %>
+</div>
+
+
+    <div class="form-group">
+      <%= f.label :body %>
+      <%= f.trix_editor :body, placeholder: "Описание задания", class: 'editor' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :start_time %>
+      <%= f.datetime_select  :start_time, start_year: 2017, selected: Date.today,  class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :end_time %>
+      <%= f.datetime_select :end_time, start_year: 2017, selected: Date.today, class: 'form-control' %>
+    </div>
+
+
+
+    <div class="form-group">
+      <%= f.label :price %>
+      <%= f.text_field :price_max, placeholder: "Цена", class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.nested_fields_for :locations do |l| %>
+          <%= l.remove_nested_fields_link %>
+        <%= l.label :address %>
+        <%= l.text_field :address, placeholder: "Введите адресс" %>
+      <% end %>
+      <%= f.add_nested_fields_link :locations %>
+      <%= debug @locations %>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.label :category_id %>
+      <%= f.collection_select :category_id, Category.order(:name), :id, :name, {include_blank:true}, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :all_tags %>
+      <%= f.text_field :all_tags, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%=f.file_field :images, :multiple => true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit t('.submit', action: @task.new_record? ? t('common.create') : t('common.edit')), class: 'btn btn-primary' %>
+      <%= link_to t('common.back'), :back, class: 'btn btn-outline-secondary' %>
+    </div>
+<% end %>

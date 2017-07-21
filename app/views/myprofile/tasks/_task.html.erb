@@ -1,0 +1,31 @@
+
+<article class="task">
+  <section class="task-head">
+    <h2><%= link_to task.title, task_path(task) %></h2>
+    <small>
+      <time><%= task.created_at.to_date.strftime("%d %B, %Y") %></time>
+      <% if task.category.present? %>
+        |
+        <%= link_to task.category.name, task.category %>
+      <% end %>
+      |
+      <% if user_signed_in?&&current_user.id==task.user_id %>
+        |
+        <%= link_to 'Изменить', edit_myprofile_customer_task_path(task) %>
+        |
+        <%= link_to 'Удалить', myprofile_customer_task_path(task), method: :delete, data: {confirm: 'Вы уверены?' } %>
+      <% end %>
+
+    </small>
+  </section>
+
+  <section class="task-summary clearfix">
+  </section>
+
+  <section class="footer-summary">
+    <%= raw task.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge badge-primary' }.join(' ') %>
+  </section>
+</article>
+
+
+

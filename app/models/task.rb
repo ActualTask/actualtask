@@ -5,13 +5,13 @@ class Task < ApplicationRecord
   has_many :tags, through: :taggings
   belongs_to :category
   belongs_to :user
-  has_many :responses
+  has_many :response_lists
   has_many :comments
   has_many :pictures #files through attachments
   has_many :task_locatings, dependent: :destroy #locations
   has_many :locations, through:  :task_locatings
   accepts_nested_attributes_for :locations
-  accepts_nested_attributes_for :responses
+  #accepts_nested_attributes_for :responses
 
 
 

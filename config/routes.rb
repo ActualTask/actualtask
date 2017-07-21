@@ -32,7 +32,10 @@ Rails.application.routes.draw do
 
     namespace :myprofile do
       resources :infos, except: [:destroy]
+      resources :customer_tasks
     end
+
+
 
 
     namespace :moderate do

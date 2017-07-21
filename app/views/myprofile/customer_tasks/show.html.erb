@@ -11,9 +11,9 @@
       <% end %>
       <% if user_signed_in? && current_user.id==@task.user_id %>
           |
-          <%= link_to 'Изменить', edit_task_path(@task) %>
+          <%= link_to 'Изменить', edit_myprofile_customer_tasks_path(@task) %>
           |
-          <%= link_to 'Удалить', task_path(@task), method: :delete, data: { confirm: 'Вы уверены?' } %>
+          <%= link_to 'Удалить', myprofile_customer_tasks_path(@task), method: :delete, data: { confirm: 'Вы уверены?' } %>
       <% end %>
     </small>
   </section>
@@ -28,15 +28,13 @@
 
 </article>
 
-<% if current_user.id==@task.user_id %>
-    <div><%= response %> </div>
-    <% else %>
+
 
 <div><% if current_user.performer_role %></div>
-      <%= render 'tasks/responces' %>
-
+      <% @task.response_lists.each do |res| %>
+          <tr>
+            <td><%= res.response_list.response_text %></td>
 
   <% end %>
+<%end%>
 
-
-<% end %>
