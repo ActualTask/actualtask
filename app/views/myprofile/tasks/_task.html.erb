@@ -1,7 +1,11 @@
 
 <article class="task">
   <section class="task-head">
-    <h2><%= link_to task.title, task_path(task) %></h2>
+    <% if current_user.id == task.user_id%>
+        <h2><%= link_to task.title, myprofile_customer_task_path(task) %></h2>
+        <% else %>
+        <h2><%= link_to task.title, myprofile_jobs_path(task) %></h2>
+ <% end %>
     <small>
       <time><%= task.created_at.to_date.strftime("%d %B, %Y") %></time>
       <% if task.category.present? %>
@@ -26,6 +30,5 @@
     <%= raw task.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge badge-primary' }.join(' ') %>
   </section>
 </article>
-
 
 

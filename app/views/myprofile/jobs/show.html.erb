@@ -1,0 +1,40 @@
+<article class="task">
+  <section class="task-head">
+    <h1><%= @task.title %></h1>
+    <h2><%= @task.price_max %></h2>
+
+    <small>
+      <time><%= @task.created_at.to_date.strftime("%d %B, %Y") %></time>
+      <% if @task.category.present? %>
+          |
+          <%= link_to @task.category.name, @task.category %>
+      <% end %>
+      <% if user_signed_in? && current_user.id==@task.user_id %>
+          |
+          <%= link_to 'Изменить', edit_myprofile_customer_tasks_path(@task) %>
+          |
+          <%= link_to 'Удалить', myprofile_customer_tasks_path(@task), method: :delete, data: { confirm: 'Вы уверены?' } %>
+      <% end %>
+    </small>
+  </section>
+
+
+
+
+
+  <section class="post-body">
+    <%= @task.body.html_safe %>
+  </section>
+
+</article>
+
+
+
+<div><% if current_user.performer_role %></div>
+      <% @task.response_lists.each do |res| %>
+          <tr>
+            <td><%= res.response_list.response_text %></td>
+
+  <% end %>
+<%end%>
+

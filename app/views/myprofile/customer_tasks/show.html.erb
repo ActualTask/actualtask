@@ -11,9 +11,9 @@
       <% end %>
       <% if user_signed_in? && current_user.id==@task.user_id %>
           |
-          <%= link_to 'Изменить', edit_myprofile_customer_tasks_path(@task) %>
+          <%= link_to 'Изменить', edit_myprofile_customer_task_path(@task) %>
           |
-          <%= link_to 'Удалить', myprofile_customer_tasks_path(@task), method: :delete, data: { confirm: 'Вы уверены?' } %>
+          <%= link_to 'Удалить', myprofile_customer_task_path(@task), method: :delete, data: { confirm: 'Вы уверены?' } %>
       <% end %>
     </small>
   </section>
@@ -29,12 +29,21 @@
 </article>
 
 
-
-<div><% if current_user.performer_role %></div>
-      <% @task.response_lists.each do |res| %>
+<article class="input">
+  <h2>Отклики</h2>
+        <selection class="task-input">
+  <% @task.response_lists.each_with_index do |res, index| %>
           <tr>
-            <td><%= res.response_list.response_text %></td>
+            <td><%= index + 1 %></td>
+            <td><%= link_to res.user.info.name+' '+res.user.info.surname, info_path(res.user.info)  %></td>
+            <div><%= res.response_text %></div>
+          </tr>
+        </selection>
+</article>
+    <div class="form-group">
+      <%= link_to 'Принять', myprofile_customer_task_path(@task,:task => [:performer_id => res.user.id]), :method => :put, class: 'btn btn-primary' %>
+      <%= link_to 'Отклонить',  class: 'btn btn-outline-secondary' %>
+    </div>
 
   <% end %>
-<%end%>
 

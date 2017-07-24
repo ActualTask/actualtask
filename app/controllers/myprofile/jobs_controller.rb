@@ -1,12 +1,14 @@
-class Myprofile::CustomerTasksController < Myprofile::MyprofileController
+class Myprofile::JobsController < Myprofile::MyprofileController
 
-  before_action :authenticate_user!
+before_action :authenticate_user!
 
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posted_tasks = current_user.tasks
-    @tasks = @posted_tasks.paginate(page: params[:page], per_page: 5)
+    @jobs = current_user.jobs
+    @tasks = @jobs.paginate(page: params[:page], per_page: 5)
+    @responded_tasks = current_user.responded_tasks
+    @responses = @responded_tasks.paginate(page: params[:page], per_page: 5)
   end
 
   def show
@@ -36,7 +38,7 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
 
 
   def update
-    if @task.update_attributes(update_params)
+    if @task.update_attributes(task_params)
       redirect_to @task, success: 'Задание обновлено'
     else
       flash.now[:danger] = 'Задание не обновлено'
@@ -79,8 +81,5 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
     params.permit(:response_text, :task_id)
   end
 
-  def update_params
-    params.require(:task).permit(:performer_id)
-  end
-
 end
+
