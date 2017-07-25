@@ -1,7 +1,6 @@
 <article class="task">
   <section class="task-head">
     <h1><%= @task.title %></h1>
-    <h2><%= @task.price_max %></h2>
 
     <small>
       <time><%= @task.created_at.to_date.strftime("%d %B, %Y") %></time>
@@ -11,9 +10,9 @@
       <% end %>
       <% if user_signed_in? && current_user.id==@task.user_id %>
           |
-          <%= link_to 'Изменить', edit_myprofile_customer_tasks_path(@task) %>
+          <%= link_to 'Изменить', edit_myprofile_jobs_path(@task) %>
           |
-          <%= link_to 'Удалить', myprofile_customer_tasks_path(@task), method: :delete, data: { confirm: 'Вы уверены?' } %>
+          <%= link_to 'Удалить', myprofile_jobs_path(@task), method: :delete, data: { confirm: 'Вы уверены?' } %>
       <% end %>
     </small>
   </section>

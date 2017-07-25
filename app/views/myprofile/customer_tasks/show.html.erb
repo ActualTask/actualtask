@@ -1,7 +1,7 @@
 <article class="task">
   <section class="task-head">
     <h1><%= @task.title %></h1>
-    <h2><%= @task.price_max %></h2>
+    <p align="right"><%= @task.price_max %></p>
 
     <small>
       <time><%= @task.created_at.to_date.strftime("%d %B, %Y") %></time>
@@ -41,8 +41,8 @@
         </selection>
 </article>
     <div class="form-group">
-      <%= link_to 'Принять', myprofile_customer_task_path(@task,:task => [:performer_id => res.user.id]), :method => :put, class: 'btn btn-primary' %>
-      <%= link_to 'Отклонить',  class: 'btn btn-outline-secondary' %>
+      <%= link_to 'Принять', myprofile_customer_task_accept_response_path(@task,:response => {:id => res}), :method => :put, class: 'btn btn-primary' %>
+      <%= link_to 'Отклонить', myprofile_customer_task_decline_response_path(@task,:response => {:id => res}), :method => :put, class: 'btn btn-outline-secondary' %>
     </div>
 
   <% end %>

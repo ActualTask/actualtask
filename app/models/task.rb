@@ -1,5 +1,4 @@
 class Task < ApplicationRecord
-  mount_uploader :images, ImageUploader
 
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
@@ -7,7 +6,7 @@ class Task < ApplicationRecord
   belongs_to :user
   has_many :response_lists
   has_many :comments
-  has_many :pictures #files through attachments
+  #has_many :pictures #files through attachments
   has_many :task_locatings, dependent: :destroy #locations
   has_many :locations, through:  :task_locatings
   accepts_nested_attributes_for :locations

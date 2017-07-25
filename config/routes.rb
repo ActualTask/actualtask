@@ -32,7 +32,11 @@ Rails.application.routes.draw do
 
     namespace :myprofile do
       resources :infos, except: [:destroy]
-      resources :customer_tasks
+      resources :customer_tasks do
+        put 'accept_response', action: :accept_response, controller: 'customer_tasks'
+        put 'decline_response', action: :decline_response, controller: 'customer_tasks'
+      end
+
       resources :jobs
     end
 

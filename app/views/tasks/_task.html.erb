@@ -1,7 +1,13 @@
 
 <article class="task">
   <section class="task-head">
-    <h2><%= link_to task.title, task_path(task) %></h2>
+    <% if task.user_id==current_user.id %>
+    <h2><%= link_to task.title, myprofile_customer_task_path(task)  %></h2>
+        <% else %>
+    <h2><%= link_to task.title, task_path(task)  %></h2>
+        <% end %>
+    <p><%= task.price_max %> руб </p>
+
     <small>
       <time><%= task.created_at.to_date.strftime("%d %B, %Y") %></time>
       <% if task.category.present? %>
@@ -11,9 +17,9 @@
       |
       <% if user_signed_in?&&current_user.id==task.user_id %>
         |
-        <%= link_to 'Изменить', edit_task_path(task) %>
+        <%= link_to 'Изменить', edit_myprofile_customer_task_path(task) %>
         |
-        <%= link_to 'Удалить', task_path(task), method: :delete, data: {confirm: 'Вы уверены?' } %>
+        <%= link_to 'Удалить', myprofile_customer_task_path(task), method: :delete, data: {confirm: 'Вы уверены?' } %>
       <% end %>
     </small>
   </section>
