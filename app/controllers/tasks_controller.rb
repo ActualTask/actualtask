@@ -32,6 +32,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+
   end
 
 
@@ -61,8 +62,8 @@ class TasksController < ApplicationController
       render @task
     #create here
     end
-  end
 
+  end
 
   private
 
