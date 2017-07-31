@@ -23,4 +23,5 @@
 
 #ignore logs and workspace
 passenger*
-.idea/*
+.idea/workspace.xml
+.idea/tasks.xml

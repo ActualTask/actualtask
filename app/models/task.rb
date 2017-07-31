@@ -7,8 +7,7 @@ class Task < ApplicationRecord
   has_many :response_lists
   has_many :comments
   #has_many :pictures #files through attachments
-  has_many :task_locatings, dependent: :destroy #locations
-  has_many :locations, through:  :task_locatings
+  has_many :locations
   accepts_nested_attributes_for :locations
   belongs_to :user, inverse_of: :jobs
   #accepts_nested_attributes_for :responses
@@ -18,7 +17,6 @@ class Task < ApplicationRecord
 
 
 
-  validates_associated :locations
   validates :title, :body, presence: true
 
   def all_tags

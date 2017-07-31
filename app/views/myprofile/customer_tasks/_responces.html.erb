@@ -1,6 +1,6 @@
 
 <%# где ты тут указываешь кастомный обработчик формы?%>
-<%= form_for @task, url: task_add_response_path(@task),  html: { multipart: true }  do |f| %>
+<%= form_for @customer_task, url: task_add_response_path(@customer_task),  html: { multipart: true }  do |f| %>
         <div class="form-group">
           <%= fields_for @response do |l| %>
       <%= l.label :responces %>

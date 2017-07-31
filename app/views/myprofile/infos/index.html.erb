@@ -13,7 +13,7 @@
             <div><%= link_to 'Мои Работы', myprofile_jobs_path, class: 'btn btn-outline-primary btn-sm' %></div>
 
         <% end %>
-        <div><%= link_to 'Мои задания', myprofile_customer_tasks_path, class: 'btn btn-outline-primary btn-sm' %></div>
+        <div><%= link_to 'Мои задания', myprofile_tasks_path, class: 'btn btn-outline-primary btn-sm' %></div>
         <div> <%= link_to 'Загрузить фото', new_performer_path, class: 'btn btn-outline-primary btn-sm'  %></div>
     <% if current_user.info.nil?%>
         <%= link_to 'Заполнить личные данные', new_myprofile_info_path, class: 'btn btn-outline-primary btn-sm' %>
@@ -21,6 +21,7 @@
         <%= current_user.info.name %>
         <%= current_user.info.surname %>
         <div><%= current_user.info.about %></div>
+        <div><%= current_user.info.city+', '+current_user.info.country_code %></div>
     <% end %>
 
 

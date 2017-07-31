@@ -1,7 +1,5 @@
 class Location < ApplicationRecord
-  has_many :infos
-  has_many :task_locatings, inverse_of: :location
-  has_many :tasks, through: :task_locatings
+  belongs_to :tasks, required: false
   geocoded_by :address do |obj,results|
     if geo = results.first
       obj.latitude = geo.latitude

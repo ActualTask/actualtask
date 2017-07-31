@@ -2,7 +2,7 @@
 <article class="anketa">
   <% if user_signed_in? && current_user.id==@info.user_id %>
       <div><%= @info.name+' '+@info.surname %></div>
-      <div><%= @location.city+' '+@location.country %></div>
+      <div><%= @info.city+' '+@info.country_code %></div>
       <div><%= @info.about %></div>
   <% end %>
 </article>
