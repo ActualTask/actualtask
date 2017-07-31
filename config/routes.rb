@@ -35,9 +35,16 @@ Rails.application.routes.draw do
       resources 'customer_tasks', :tasks, :controller=>'customer_tasks', as: 'tasks' do
         put 'accept_response', action: :accept_response, controller: 'customer_tasks'
         put 'decline_response', action: :decline_response, controller: 'customer_tasks'
+
       end
 
-      resources :jobs
+      resources :jobs do
+        post 'task_done', action: :task_done, controller: 'jobs'
+        post 'cancel_response', action: :cancel_response, controller: 'jobs'
+        post 'cancel_job', action: :cancel_job, controller: 'jobs'
+
+
+      end
     end
 
 

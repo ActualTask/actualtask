@@ -3,6 +3,9 @@ class Myprofile::JobsController < Myprofile::MyprofileController
 before_action :authenticate_user!
 
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:task_done, :cancel_response]
+
+
 
   def index
     @jobs = current_user.jobs
@@ -12,7 +15,7 @@ before_action :authenticate_user!
   end
 
   def show
-
+    @response = current_user.response_lists.find_by task_id: @task.id
   end
 
   def new
@@ -59,13 +62,36 @@ before_action :authenticate_user!
     if @response.save
       redirect_to @task
     else
-      flash.now[:danger] = 'huita'
+      flash.now[:danger] = 'Что-то пошло не так'
       render @task
       #create here
     end
   end
 
+  def cancel_response
+    @response = ResponseList.find(find_response[:response_id])
+    if (@response.update_attributes('response_status'=>'response_canceled')&&@task.update_attributes('performer_id' => nil))
+      redirect_to myprofile_job_path(@task), success: 'Отклик отозван'
+    end
+    else
+      redirect_to myprofile_job_path(@task), error: 'Что-то не так'
+  end
 
+  def cancel_job
+    @response = ResponseList.find(find_response[:response_id])
+    if (@response.update_attributes('response_status'=>'job_canceled')&&@task.update_attributes('performer_id' => nil))
+      redirect_to myprofile_job_path, success: 'Вы отказались от задания'
+    end
+  else
+    redirect_to myprofile_job_path(@task), error: 'Что-то не так'
+  end
+
+  def task_done
+   @task.task_status = 'done'
+   if @task.save
+     redirect_to myprofile_job_path(@task), success: 'Ожидает принятия'
+   end
+ end
 
 
   private
@@ -73,8 +99,13 @@ before_action :authenticate_user!
   def set_task
     @task = Task.find(params[:id])
   end
+def set_job
+  @task = Task.find(params[:job_id])
+end
 
-
+def find_response
+  params.permit(:response_id)
+end
 
   def task_params
     params.require(:task).permit(:title, :body, :all_tags, :price_max, :price_min, :category_id,  :location_attributes => [:address, :_destroy, :id, :task_id] )
@@ -83,7 +114,7 @@ before_action :authenticate_user!
   def response_params
     params.permit(:response_text, :task_id)
   end
-
 end
+
 
 

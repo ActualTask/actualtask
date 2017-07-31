@@ -21,19 +21,27 @@
 
 
 
+
   <section class="post-body">
     <%= @task.body.html_safe %>
   </section>
 
-</article>
+  <% if @task.task_status==nil %>
 
-
-
-<div><% if current_user.performer_role %></div>
-      <% @task.response_lists.each do |res| %>
-          <tr>
-            <td><%= res.response_list.response_text %></td>
-
+  <div class="task_status">
+    <%= button_to 'Выполнил', myprofile_job_task_done_path(@task),  class: 'btn btn-primary' %>
+  </div>
   <% end %>
-<%end%>
+  <% if @task.task_status=='done' %>
+  <div>Задание выполнено и ожидает проверки</div>
+<% end %>
+</article>
+ <div><%= @response.response_text %></div>
+<% if @response.response_status == 'created' %>
+<%= button_to 'Отозвать otklik', myprofile_job_cancel_response_path(@task, 'response_id'=>@response.id), method: :post, class: 'btn btn-primary' %>
+<% end %>
+
+<% if current_user.id==@task.performer_id %>
+    <%= button_to 'Отказаться от задания', myprofile_job_cancel_job_path(@task, 'response_id'=>@response.id), method: :post, class: 'btn btn-primary' %>
+<% end %>
 

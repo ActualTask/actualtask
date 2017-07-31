@@ -59,7 +59,7 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
 
   def update
     if @customer_task.update_attributes(task_params)
-      redirect_to myprofile_task_path(@cus), success: 'Задание обновлено'
+      redirect_to myprofile_task_path(@customer_task), success: 'Задание обновлено'
     else
       flash.now[:danger] = 'Задание не обновлено'
       render :edit
@@ -109,7 +109,7 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
     params.require(:response).permit(:id)
   end
   def set_customer_task
-    @customer_task = Task.find(params[:customer_task_id])
+    @customer_task = Task.find(params[:task_id])
   end
 
 end

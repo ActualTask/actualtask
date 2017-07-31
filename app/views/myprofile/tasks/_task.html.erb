@@ -4,7 +4,7 @@
     <% if current_user.id == task.user_id%>
         <h2><%= link_to task.title, myprofile_task_path(task) %></h2>
         <% else %>
-        <h2><%= link_to task.title, myprofile_jobs_path(task) %></h2>
+        <h2><%= link_to task.title, myprofile_job_path(task) %></h2>
  <% end %>
     <small>
       <time><%= task.created_at.to_date.strftime("%d %B, %Y") %></time>
