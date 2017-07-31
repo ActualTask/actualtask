@@ -18,18 +18,17 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
   end
 
   def new
-    @task = Task.new
-    @task.task_locatings.build.build_location
+    @customer_task = Task.new
   end
 
   def create
-    @task = Task.new(task_params)
-    @task.user_id=current_user.id
-    @task.tasks_verified = 'created'
-    if @task.save
-      redirect_to @task, success: 'Задание успешно создано'
+    @customer_task = Task.new(task_params)
+    @customer_task.user_id=current_user.id
+    @customer_task.tasks_verified = 'created'
+    if @customer_task.save
+      redirect_to myprofile_task_path(@customer_task), success: task_params
     else
-      flash.now[:danger]= 'Задание не создано'
+      flash.now[:danger]= task_params
       render :new
 
     end
@@ -39,28 +38,28 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
   end
 
   def accept_response
-    if @task.update_attributes('performer_id' => @response.performer_id)&&@response.update_attributes('response_status' => 'accepted')
-    redirect_to @task, success: set_response_params
+    if @customer_task.update_attributes('performer_id' => @response.performer_id)&&@response.update_attributes('response_status' => 'accepted')
+    redirect_to @customer_task, success: set_response_params
     else
       flash.now[:danger] = 'Что-то пошло не так'+response_params
-      render @task
+      render @customer_task
       end
 
     end
 
   def decline_response
     if @response.update_attributes('response_status' => 'declined')
-      redirect_to @task, success: set_response_params
+      redirect_to @customer_task, success: set_response_params
     else
       flash.now[:danger] = 'Что-то пошло не так'
-      render @task
+      render @customer_task
     end
 
   end
 
   def update
-    if @task.update_attributes(task_params)
-      redirect_to @task, success: 'Задание обновлено'
+    if @customer_task.update_attributes(task_params)
+      redirect_to myprofile_task_path(@cus), success: 'Задание обновлено'
     else
       flash.now[:danger] = 'Задание не обновлено'
       render :edit
@@ -68,20 +67,20 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
   end
 
   def destroy
-    @task.destroy
+    @customer_task.destroy
     redirect_to tasks_path, success: 'Задание удалено'
   end
 
   def add_response
     current_user.performer_role?
-    @task = Task.find(response_params[:task_id])
+    @customer_task = Task.find(response_params[:task_id])
     @response = ResponseList.new(response_params)
     @response.performer_id = current_user.id
     if @response.save
-      redirect_to @task
+      redirect_to @customer_task
     else
       flash.now[:danger] = 'huita'
-      render @task
+      render @customer_task
       #create here
     end
   end
@@ -90,7 +89,7 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
   private
 
   def set_task
-    @task = Task.find(params[:id])
+    @customer_task = Task.find(params[:id])
   end
 
 
@@ -99,7 +98,7 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
   end
 
   def task_params
-    params.require(:task).permit(:title, :body, :all_tags, :price_max, :price_min, :category_id,  :location_attributes => [:address, :_destroy, :id, :task_id] )
+    params.require(:task).permit(:title, :body, :all_tags, :price_max, :price_min, :category_id,  :locations_attributes => [:id, :address, :_destroy] )
   end
 
   def response_params
@@ -110,7 +109,7 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
     params.require(:response).permit(:id)
   end
   def set_customer_task
-    @task = Task.find(params[:customer_task_id])
+    @customer_task = Task.find(params[:customer_task_id])
   end
 
 end

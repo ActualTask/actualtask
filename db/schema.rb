@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719120146) do
+ActiveRecord::Schema.define(version: 20170729101328) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "commenter"
+    t.text "body"
+    t.integer "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_comments_on_task_id"
   end
 
   create_table "infos", force: :cascade do |t|
@@ -29,6 +38,11 @@ ActiveRecord::Schema.define(version: 20170719120146) do
     t.text "about"
     t.integer "location_id"
     t.integer "user_id"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "city"
+    t.string "country_code"
+    t.string "address"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -43,6 +57,7 @@ ActiveRecord::Schema.define(version: 20170719120146) do
     t.string "postal_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "task_id"
   end
 
   create_table "moderators", force: :cascade do |t|
@@ -69,6 +84,12 @@ ActiveRecord::Schema.define(version: 20170719120146) do
     t.integer "user_id"
     t.string "photo_id_1"
     t.string "photo_id_2"
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "response_lists", force: :cascade do |t|

@@ -9,12 +9,10 @@
       <%= f.text_field :surname, class: 'form-control' %>
     </div>
 
-    <%= fields_for @location do |l| %>
     <div class="form-group">
-      <%= l.label :address %>
-      <%= l.text_field :address, class: 'form-control' %>
+      <%= f.label :address %>
+      <%= f.text_field :address, class: 'form-control' %>
     </div>
-    <% end %>
 
     <div class="form-group">
       <%= f.label :phone %>

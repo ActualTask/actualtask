@@ -1,15 +1,15 @@
-<% if @task.errors.any? %>
+<% if @customer_task.errors.any? %>
     <div class="alert alert-danger">
       <h5><%= t('common.errors') %></h5>
       <ul>
-        <% @task.errors.full_messages.each do |message|  %>
+        <% @customer_task.errors.full_messages.each do |message|  %>
         <li><%= message %></li>
             <% end %>
       </ul>
     </div>
     <% end %>
 
-<%= form_for @task, html: { multipart: true }  do |f| %>
+<%= form_for [:myprofile, @customer_task], html: { multipart: true }  do |f| %>
 <div class="form-group">
   <%= f.label :title %>
   <%= f.text_field :title, placeholder: "Введите имя задания", class: 'form-control' %>
@@ -45,7 +45,6 @@
         <%= l.text_field :address, placeholder: "Введите адресс" %>
       <% end %>
       <%= f.add_nested_fields_link :locations %>
-      <%= debug @locations %>
     </div>
 
 
@@ -64,7 +63,7 @@
     </div>
 
     <div class="form-group">
-      <%= f.submit t('.submit', action: @task.new_record? ? t('common.create') : t('common.edit')), class: 'btn btn-primary' %>
+      <%= f.submit t('.submit', action: @customer_task.new_record? ? t('common.create') : t('common.edit')), class: 'btn btn-primary' %>
       <%= link_to t('common.back'), :back, class: 'btn btn-outline-secondary' %>
     </div>
 <% end %>

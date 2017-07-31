@@ -2,7 +2,7 @@
 <article class="task">
   <section class="task-head">
     <% if current_user.id == task.user_id%>
-        <h2><%= link_to task.title, myprofile_customer_task_path(task) %></h2>
+        <h2><%= link_to task.title, myprofile_task_path(task) %></h2>
         <% else %>
         <h2><%= link_to task.title, myprofile_jobs_path(task) %></h2>
  <% end %>
@@ -15,9 +15,9 @@
       |
       <% if user_signed_in?&&current_user.id==task.user_id %>
         |
-        <%= link_to 'Изменить', edit_myprofile_customer_task_path(task) %>
+        <%= link_to 'Изменить', edit_myprofile_task_path(task) %>
         |
-        <%= link_to 'Удалить', myprofile_customer_task_path(task), method: :delete, data: {confirm: 'Вы уверены?' } %>
+        <%= link_to 'Удалить', myprofile_task_path(task), method: :delete, data: {confirm: 'Вы уверены?' } %>
       <% end %>
 
     </small>

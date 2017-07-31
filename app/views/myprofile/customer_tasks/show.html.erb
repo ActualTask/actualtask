@@ -1,19 +1,22 @@
 <article class="task">
   <section class="task-head">
-    <h1><%= @task.title %></h1>
-    <p align="right"><%= @task.price_max %></p>
+    <h1><%= @customer_task.title %></h1>
+    <% @customer_task.locations.each do |loc| %>
+        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{loc.latitude}%2C#{loc.longitude}&key=AIzaSyBdk5XNuueyFw1PSv5QCdWTCRiVmKkDhVY" %>
+    <% end %>
+    <p align="right"><%= @customer_task.price_max %></p>
 
     <small>
-      <time><%= @task.created_at.to_date.strftime("%d %B, %Y") %></time>
-      <% if @task.category.present? %>
+      <time><%= @customer_task.created_at.to_date.strftime("%d %B, %Y") %></time>
+      <% if @customer_task.category.present? %>
           |
-          <%= link_to @task.category.name, @task.category %>
+          <%= link_to @customer_task.category.name, @customer_task.category %>
       <% end %>
-      <% if user_signed_in? && current_user.id==@task.user_id %>
+      <% if user_signed_in? && current_user.id==@customer_task.user_id %>
           |
-          <%= link_to 'Изменить', edit_myprofile_customer_task_path(@task) %>
+          <%= link_to 'Изменить', edit_myprofile_task_path(@customer_task) %>
           |
-          <%= link_to 'Удалить', myprofile_customer_task_path(@task), method: :delete, data: { confirm: 'Вы уверены?' } %>
+          <%= link_to 'Удалить', myprofile_task_path(@customer_task), method: :delete, data: { confirm: 'Вы уверены?' } %>
       <% end %>
     </small>
   </section>
@@ -23,7 +26,7 @@
 
 
   <section class="post-body">
-    <%= @task.body.html_safe %>
+    <%= @customer_task.body.html_safe %>
   </section>
 
 </article>
@@ -32,7 +35,7 @@
 <article class="input">
   <h2>Отклики</h2>
         <selection class="task-input">
-  <% @task.response_lists.each_with_index do |res, index| %>
+  <% @customer_task.response_lists.each_with_index do |res, index| %>
           <tr>
             <td><%= index + 1 %></td>
             <td><%= link_to res.user.info.name+' '+res.user.info.surname, info_path(res.user.info)  %></td>
@@ -41,8 +44,8 @@
         </selection>
 </article>
     <div class="form-group">
-      <%= link_to 'Принять', myprofile_customer_task_accept_response_path(@task,:response => {:id => res}), :method => :put, class: 'btn btn-primary' %>
-      <%= link_to 'Отклонить', myprofile_customer_task_decline_response_path(@task,:response => {:id => res}), :method => :put, class: 'btn btn-outline-secondary' %>
+      <%= link_to 'Принять', myprofile_task_accept_response_path(@customer_task,:response => {:id => res}), :method => :put, class: 'btn btn-primary' %>
+      <%= link_to 'Отклонить', myprofile_task_decline_response_path(@customer_task,:response => {:id => res}), :method => :put, class: 'btn btn-outline-secondary' %>
     </div>
 
   <% end %>
