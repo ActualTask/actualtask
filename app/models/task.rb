@@ -1,5 +1,8 @@
 class Task < ApplicationRecord
 
+  mount_uploaders :attachments, AttachmentsUploader
+
+
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   belongs_to :category

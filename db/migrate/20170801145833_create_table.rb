@@ -25,6 +25,11 @@ class CreateTable < ActiveRecord::Migration[5.1]
     t.text "about"
     t.integer "location_id"
     t.integer "user_id"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "city"
+    t.string "country_code"
+    t.string "address"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -39,6 +44,7 @@ class CreateTable < ActiveRecord::Migration[5.1]
     t.string "postal_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "task_id"
   end
 
   create_table "moderators", force: :cascade do |t|
@@ -67,6 +73,12 @@ class CreateTable < ActiveRecord::Migration[5.1]
     t.string "photo_id_2"
   end
 
+  create_table "pictures", force: :cascade do |t|
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "response_lists", force: :cascade do |t|
     t.integer "task_id"
     t.integer "performer_id"
@@ -75,6 +87,14 @@ class CreateTable < ActiveRecord::Migration[5.1]
     t.string "response_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.text "response"
+    t.boolean "accept"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "price"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -101,13 +121,18 @@ class CreateTable < ActiveRecord::Migration[5.1]
     t.datetime "updated_at", null: false
   end
 
+
+  create_table "task_locatings", force: :cascade do |t|
+    t.integer "task_id"
+    t.integer "location_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "title"
-    t.text "summary"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "attachments"
+    t.json "attachments"
     t.integer "category_id"
     t.integer "user_id"
     t.decimal "price_max"

@@ -42,7 +42,7 @@
       <%= f.nested_fields_for :locations do |l| %>
           <%= l.remove_nested_fields_link %>
         <%= l.label :address %>
-        <%= l.text_field :address, placeholder: "Введите адресс" %>
+        <%= l.text_field :address, :size => 85, placeholder: "Введите адресс", class: 'form-control' %>
       <% end %>
       <%= f.add_nested_fields_link :locations %>
     </div>
@@ -59,8 +59,13 @@
     </div>
 
     <div class="form-group">
-      <%=f.file_field :images, :multiple => true %>
-    </div>
+      <%=f.file_field :attachments, multiple: true %>
+      <%= label_tag :remove_attachments do %>
+          Remove image
+          <%= f.check_box :remove_attachments %>
+          <%= f.hidden_field :attachments_cache %>
+      <% end %>
+          </div>
 
     <div class="form-group">
       <%= f.submit t('.submit', action: @customer_task.new_record? ? t('common.create') : t('common.edit')), class: 'btn btn-primary' %>

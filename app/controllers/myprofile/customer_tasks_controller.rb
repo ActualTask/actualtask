@@ -26,7 +26,7 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
     @customer_task.user_id=current_user.id
     @customer_task.tasks_verified = 'created'
     if @customer_task.save
-      redirect_to myprofile_task_path(@customer_task), success: task_params
+      redirect_to myprofile_task_path(@customer_task), success: 'Успех'
     else
       flash.now[:danger]= task_params
       render :new
@@ -98,7 +98,7 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
   end
 
   def task_params
-    params.require(:task).permit(:title, :body, :all_tags, :price_max, :price_min, :category_id,  :locations_attributes => [:id, :address, :_destroy] )
+    params.require(:task).permit(:title, :body, :all_tags, :price_max, :price_min, :category_id, :remote_attachments_url, :remove_attachments, {attachments: []},  :locations_attributes => [:id, :address, :_destroy] )
   end
 
   def response_params

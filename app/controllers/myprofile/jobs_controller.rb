@@ -3,7 +3,8 @@ class Myprofile::JobsController < Myprofile::MyprofileController
 before_action :authenticate_user!
 
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_job, only: [:task_done, :cancel_response]
+  before_action :set_job, only: [:task_done, :cancel_response, :cancel_job]
+
 
 
 
@@ -80,12 +81,9 @@ before_action :authenticate_user!
   def cancel_job
     @response = ResponseList.find(find_response[:response_id])
     if (@response.update_attributes('response_status'=>'job_canceled')&&@task.update_attributes('performer_id' => nil))
-      redirect_to myprofile_job_path, success: 'Вы отказались от задания'
+      redirect_to myprofile_jobs_path, success: 'Вы отказались от задания'
     end
-  else
-    redirect_to myprofile_job_path(@task), error: 'Что-то не так'
   end
-
   def task_done
    @task.task_status = 'done'
    if @task.save
@@ -108,7 +106,7 @@ def find_response
 end
 
   def task_params
-    params.require(:task).permit(:title, :body, :all_tags, :price_max, :price_min, :category_id,  :location_attributes => [:address, :_destroy, :id, :task_id] )
+    params.require(:task).permit(:title, :body, :all_tags, :price_max, :price_min, :category_id, {attachments: []},  :location_attributes => [:address, :_destroy, :id, :task_id] )
   end
 
   def response_params
