@@ -71,6 +71,17 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
     redirect_to tasks_path, success: 'Задание удалено'
   end
 
+  def add_review
+    @customer_task = Task.find(review_params[:task_id])
+    @review = Review.new(review_params)
+    if @review.save
+      redirect_to @customer_task, success: 'Вы оставили отзыв'
+    end
+
+
+
+  end
+
   def add_response
     current_user.performer_role?
     @customer_task = Task.find(response_params[:task_id])
@@ -112,4 +123,8 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
     @customer_task = Task.find(params[:task_id])
   end
 
+
+  def review_params
+    params.permit(:text, :task_id)
+  end
 end

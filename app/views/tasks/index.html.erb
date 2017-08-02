@@ -3,12 +3,18 @@
     <%= link_to 'Админ Панель', admin_categories_path, class: 'btn btn-outline-primary btn-sm' %>
 <% end %>
 
+<% if current_user.moderator? %>
+
+<%= link_to 'Проверить пользователей', moderate_users_path, class: 'btn btn-outline-primary btn-sm' %>
+<%= link_to 'Проверить задания', moderate_tasks_path, class: 'btn btn-outline-primary btn-sm' %>
+
+<% else %>
+
+
     <% if user_signed_in? %>
 
     <%= link_to 'Новое задание', new_myprofile_task_path, class: 'btn btn-outline-primary btn-sm' %>
 
-
-<% end %>
 
 
 <section id='tasks'>
@@ -17,7 +23,8 @@
 
 <%= will_paginate @tasks, renderer: 'BootstrapPaginationHelper::LinkRenderer' %>
 
-
+<% end %>
+<% end %>
 
 
 

@@ -1,11 +1,13 @@
 
-<%# где ты тут указываешь кастомный обработчик формы?%>
 <%= form_for @customer_task, url: task_add_response_path(@customer_task),  html: { multipart: true }  do |f| %>
         <div class="form-group">
           <%= fields_for @response do |l| %>
       <%= l.label :responces %>
       <%= l.text_area :response_text, placeholder: "Введите текст", class: 'form-control' %>
-    </div>
+      <%= l.text_area :performer_price, placeholder: "Предлдожите свою цену", class: 'form-control' %>
+
+              </div>
+
       <div class="form-group">
             <%= l.submit "Отправить отзыв", class: 'btn btn-primary' %>
       </div>

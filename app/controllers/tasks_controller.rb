@@ -58,7 +58,7 @@ class TasksController < ApplicationController
     if @response.save
       redirect_to @task
     else
-      flash.now[:danger] = 'huita'
+      flash.now[:danger] = 'Что-то не так'
       render @task
     #create here
     end
@@ -77,7 +77,7 @@ class TasksController < ApplicationController
   end
 
   def response_params
-    params.permit(:response_text, :task_id)
+    params.permit(:response_text, :task_id, :performer_price)
   end
 
   end

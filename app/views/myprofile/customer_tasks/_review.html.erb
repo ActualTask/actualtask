@@ -1,0 +1,12 @@
+
+
+<%= form_for @customer_task, url: myprofile_task_add_review_path(@customer_task)  do |f| %>
+    <%= fields_for @review do |l| %>
+        <%= l.label :review %>
+    <%= l.text_area :text, placeholder: "Введите текст", class: 'form-control' %>
+
+
+        <%= l.submit "Отправить", class: 'btn btn-primary' %>
+
+    <% end %>
+<% end %>

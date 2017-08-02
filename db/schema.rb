@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801145833) do
+ActiveRecord::Schema.define(version: 20170802143737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,12 +23,11 @@ ActiveRecord::Schema.define(version: 20170801145833) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "commenter"
-    t.text "body"
     t.integer "task_id"
+    t.integer "user_id"
+    t.text "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["task_id"], name: "index_comments_on_task_id"
   end
 
   create_table "infos", force: :cascade do |t|
@@ -99,10 +98,10 @@ ActiveRecord::Schema.define(version: 20170801145833) do
     t.integer "task_id"
     t.integer "performer_id"
     t.text "response_text"
-    t.decimal "price"
     t.string "response_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "performer_price"
   end
 
   create_table "responses", force: :cascade do |t|
@@ -111,6 +110,14 @@ ActiveRecord::Schema.define(version: 20170801145833) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "price"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "task_id"
+    t.integer "user_id"
+    t.integer "user_reviewed"
+    t.text "text"
+    t.integer "rating"
   end
 
   create_table "skills", force: :cascade do |t|

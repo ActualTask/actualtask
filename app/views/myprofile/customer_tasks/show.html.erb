@@ -50,14 +50,23 @@
             <td><%= index + 1 %></td>
             <td><%= link_to res.user.info.name+' '+res.user.info.surname, info_path(res.user.info)  %></td>
             <div><%= res.response_text %></div>
+            <% if res.performer_price.present? %>
+                <p></p>
+                <p> Исполнитель предложил свою цену</p>
+            <div><%= res.performer_price  %></div>
           </tr>
         </selection>
 
 </article>
+                <p></p>
     <div class="form-group">
       <%= link_to 'Принять', myprofile_task_accept_response_path(@customer_task,:response => {:id => res}), :method => :put, class: 'btn btn-primary' %>
       <%= link_to 'Отклонить', myprofile_task_decline_response_path(@customer_task,:response => {:id => res}), :method => :put, class: 'btn btn-outline-secondary' %>
     </div>
 
-  <% end %>
+                <% if current_user.id==@customer_task.user_id  %>
+       <% link_to 'Оставить отзыв' %>
 
+  <% end %>
+<% end %>
+<% end %>

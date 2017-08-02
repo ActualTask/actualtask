@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       resources 'customer_tasks', :tasks, :controller=>'customer_tasks', as: 'tasks' do
         put 'accept_response', action: :accept_response, controller: 'customer_tasks'
         put 'decline_response', action: :decline_response, controller: 'customer_tasks'
+        put 'add_review', action: :add_review, controller: 'customer_tasks'
 
       end
 

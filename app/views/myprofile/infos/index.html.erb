@@ -8,13 +8,16 @@
     t.text "about"
     t.string "location" %>
 <% if user_signed_in? %>
-    <% if current_user.performer.nil? %>
         <% if current_user.performer_role %>
             <div><%= link_to 'Мои Работы', myprofile_jobs_path, class: 'btn btn-outline-primary btn-sm' %></div>
 
         <% end %>
         <div><%= link_to 'Мои задания', myprofile_tasks_path, class: 'btn btn-outline-primary btn-sm' %></div>
+    <% if current_user.performer.nil? %>
+
         <div> <%= link_to 'Загрузить фото', new_performer_path, class: 'btn btn-outline-primary btn-sm'  %></div>
+    <% end %>
+
     <% if current_user.info.nil?%>
         <%= link_to 'Заполнить личные данные', new_myprofile_info_path, class: 'btn btn-outline-primary btn-sm' %>
     <% else %>
@@ -25,7 +28,6 @@
     <% end %>
 
 
-   <% end %>
     <%= render @tasks %>
 
 
