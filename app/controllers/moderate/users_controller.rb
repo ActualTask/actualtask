@@ -11,6 +11,13 @@ class Moderate::UsersController < Moderate::ModerateController
   def show
   end
 
+  def verify
+    user.achievements.create('name' => 'verify')
+    @price==500
+
+  end
+
+
   def update
       if @user.update_attributes(user_params) #:tasks_verified=>params[:task][:tasks_verified]
         redirect_to moderate_users_path, success:'Модерация прошла успешно'

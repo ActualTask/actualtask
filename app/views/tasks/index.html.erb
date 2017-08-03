@@ -1,6 +1,6 @@
 <h1><%= t('.title') %></h1>
 <% if current_user.admin? %>
-    <%= link_to 'Админ Панель', admin_categories_path, class: 'btn btn-outline-primary btn-sm' %>
+    <%= link_to 'Создать категорию', admin_categories_path, class: 'btn btn-outline-primary btn-sm' %>
 <% end %>
 
 <% if current_user.moderator? %>

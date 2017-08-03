@@ -1,6 +1,7 @@
 <article class="task">
   <section class="task-head">
     <h1><%= @task.title %></h1>
+
     <p align="right"><%= @task.price_max %> руб</p>
 
     <small>
@@ -26,7 +27,10 @@
     <%= @task.body.html_safe %>
   </section>
 </article>
+
   <% if current_user.performer_role&&current_user.id!=@task.user_id %>
       <%= render 'responses' %>
 
-  <% end %>
+
+<% end %>
+

@@ -2,6 +2,7 @@
   <section class="task-head">
     <h1><%= @customer_task.title %></h1>
 
+
     <% @customer_task.locations.each do |loc| %>
         <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{loc.latitude}%2C#{loc.longitude}&key=AIzaSyBdk5XNuueyFw1PSv5QCdWTCRiVmKkDhVY" %>
     <% end %>
@@ -18,6 +19,7 @@
           <%= link_to 'Изменить', edit_myprofile_task_path(@customer_task) %>
           |
           <%= link_to 'Удалить', myprofile_task_path(@customer_task), method: :delete, data: { confirm: 'Вы уверены?' } %>
+          |
       <% end %>
     </small>
   </section>
@@ -64,9 +66,9 @@
       <%= link_to 'Отклонить', myprofile_task_decline_response_path(@customer_task,:response => {:id => res}), :method => :put, class: 'btn btn-outline-secondary' %>
     </div>
 
-                <% if current_user.id==@customer_task.user_id  %>
-       <% link_to 'Оставить отзыв' %>
 
   <% end %>
 <% end %>
-<% end %>
+
+          <%= render 'review' %>
+

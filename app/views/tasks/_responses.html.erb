@@ -2,7 +2,7 @@
 <%= form_for @task, url: task_add_response_path(@task),  html: { multipart: true }  do |f| %>
         <div class="form-group">
           <%= fields_for @response do |l| %>
-      <%= t("responses") %><%= l.label :responses %>
+      <%= l.label :responses %>
       <%= l.text_area :response_text, placeholder: "Введите текст", class: 'form-control' %>
        <p>
               <%= l.text_field :performer_price, placeholder: "Предложите свою цену", class: 'form-control' %>
