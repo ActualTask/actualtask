@@ -100,6 +100,9 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
 
   private
 
+  def set_price_limit
+    @price_limit = 500
+  end
   def set_task
     @customer_task = Task.find(params[:id])
   end
@@ -110,7 +113,7 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
   end
 
   def task_params
-    params.require(:task).permit(:title, :body, :all_tags, :price_max, :price_min, :category_id, :remote_attachments_url, :remove_attachments, {attachments: []},  :locations_attributes => [:id, :address, :_destroy] )
+    params.require(:task).permit(:title, :body, :all_tags, :price, :price_max, :price_min, :category_id, :remote_attachments_url, :remove_attachments, {attachments: []},  :locations_attributes => [:id, :address, :_destroy] )
   end
 
   def response_params

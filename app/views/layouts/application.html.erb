@@ -11,23 +11,22 @@
 <body>
 <div class="container">
   <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <a class="navbar-brand" href="#">Tasks</a>
+    <a class="navbar-brand" href="<%= root_path %>">Tasks</a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item <%= 'active' if current_page?(root_path) || current_page?(tasks_path) %>">
-          <a class="nav-link" href="<%= root_path %>">Все задания</a>
-        </li>
-        <% Category.order(:name).roots.each do |category| %>
-            <li class="nav-item <%= 'active' if current_page?(category_path(category)) %>">
-              <%= link_to category.name, category, class: 'nav-link' %>
-            </li>
-        <% end %>
+
+
       </ul>
 
       <ul class="navbar-nav pull-xs-right">
 
         <% if user_signed_in? %>
+
+            <li class="nav-item">
+              <%= link_to avatar_for(current_user, size: 35), current_user.email %>
+            </li>
 
             <li class="nav-item">
               <%= link_to "Выход", destroy_user_session_path, method: :delete, class: "nav-link" %>

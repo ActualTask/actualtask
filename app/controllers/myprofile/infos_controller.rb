@@ -14,14 +14,18 @@ class Myprofile::InfosController < Myprofile::MyprofileController
 
 
   def edit
+
+  end
+
+
+  def update
     if @info.update_attributes(info_params)
-      redirect_to @info, success: 'Анкета обновлена'
+      redirect_to myprofile_infos_path, success: 'Анкета обновлена'
     else
       flash.now[:danger] = 'Анкета не обновлена'
       render :edit
     end
   end
-
 
   def create
 
@@ -42,7 +46,7 @@ end
   private
 
 def info_params
-  params.require(:info).permit(:name, :surname, :dob, :about, :phone, :address)
+  params.require(:info).permit(:name, :surname, :dob, :about, :phone, :address, :avatar, :remove_avatar,:remote_avatar_url)
 end
 
 def set_info

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170803145920) do
+ActiveRecord::Schema.define(version: 20170804124746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20170803145920) do
     t.string "city"
     t.string "country_code"
     t.string "address"
+    t.string "avatar"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -176,6 +177,7 @@ ActiveRecord::Schema.define(version: 20170803145920) do
     t.datetime "finish_time"
     t.integer "performer_id"
     t.integer "moderator_id"
+    t.decimal "price"
     t.index ["category_id"], name: "index_tasks_on_category_id"
   end
 
