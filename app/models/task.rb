@@ -1,6 +1,8 @@
 class Task < ApplicationRecord
 
+
   mount_uploaders :attachments, AttachmentsUploader
+
 
 
   has_many :taggings, dependent: :destroy
@@ -13,6 +15,7 @@ class Task < ApplicationRecord
   has_many :locations
   accepts_nested_attributes_for :locations
   belongs_to :user, inverse_of: :jobs
+
   #accepts_nested_attributes_for :responses
 
 

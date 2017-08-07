@@ -7,9 +7,11 @@
     <small>
       <time><%= @task.created_at.to_date.strftime("%d %B, %Y") %></time>
       <% if @task.category.present? %>
+          <% if current_user.info.present? %>
           |
           <%= link_to current_user.info.name+' '+current_user.info.surname, info_path(current_user.info)  %>
-          |
+          <% end %>
+              |
           <%= link_to @task.category.name, @task.category %>
       <% end %>
       <% if user_signed_in? && current_user.id==@task.user_id %>

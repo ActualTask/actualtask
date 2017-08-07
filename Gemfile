@@ -24,6 +24,7 @@ gem 'cancancan'
 gem 'devise'
 gem 'acts_as_commentable_with_threading'
 gem 'closure_tree'
+gem 'pg_search'
 # Use geocoder for locations
 gem 'geocoder'
 gem 'jquery-rails'

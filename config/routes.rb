@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :infos, only: [:show]
     resources :performers
     resources :comments
+    resources :searches
 
     namespace :myprofile do
       resources :infos, except: [:destroy]

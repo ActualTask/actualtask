@@ -7,6 +7,7 @@ class TasksController < ApplicationController
   def index
     @posted_tasks = Task.where(tasks_verified: 'verified')
     @tasks = @posted_tasks.paginate(page: params[:page], per_page: 5)
+    @tasks= Task.where(["title LIKE ?", "%#{params[:search]}%"])
   end
 
   def show
