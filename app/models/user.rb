@@ -15,8 +15,6 @@ class User < ApplicationRecord
   has_many :response_lists, class_name: 'ResponseList', primary_key: 'id', foreign_key: 'performer_id'
   has_many :jobs, class_name: "Task", foreign_key: "performer_id"
   has_many :responded_tasks, :through => :response_lists, :source => :task, foreign_key: 'performer_id'
-  has_many :reviews
-  has_many :user_reviews, class_name: "Review", foreign_key: "user_reviewed"
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|

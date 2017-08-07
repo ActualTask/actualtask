@@ -13,7 +13,6 @@ class Task < ApplicationRecord
   has_many :locations
   accepts_nested_attributes_for :locations
   belongs_to :user, inverse_of: :jobs
-  has_many :reviews
   #accepts_nested_attributes_for :responses
 
 

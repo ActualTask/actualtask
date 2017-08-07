@@ -25,6 +25,7 @@
         <% if user_signed_in? %>
 
             <li class="nav-item">
+
               <%= link_to avatar_for(current_user, size: 35), current_user.email %>
             </li>
 
