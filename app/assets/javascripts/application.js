@@ -19,3 +19,5 @@
 //= require bootstrap-sprockets
 //= require trix
 //= require nested_form_fields
+//= require filterrific/filterrific-jquery
+

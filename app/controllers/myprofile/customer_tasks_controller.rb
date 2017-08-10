@@ -37,8 +37,9 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
   end
 
   def accept_response
-    if @customer_task.update_attributes('performer_id' => @response.performer_id)&&@response.update_attributes('response_status' => 'accepted')
-    redirect_to @customer_task, success: set_response_params
+    if @customer_task.update_attributes('performer_id' => @response.performer_id, )&&@response.update_attributes('response_status' => 'accepted')&&@customer_task.update_attributes('task_status' => 'in work' )
+
+      redirect_to @customer_task, success: set_response_params
     else
       flash.now[:danger] = 'Что-то пошло не так'
       render @customer_task
@@ -47,7 +48,7 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
     end
 
   def decline_response
-    if @response.update_attributes('response_status' => 'declined')
+    if @customer_task.update_attributes('performer_id'=> nil )&&@response.update_attributes('response_status' => 'declined')
       redirect_to @customer_task, success: set_response_params
     else
       flash.now[:danger] = 'Что-то пошло не так'
@@ -76,6 +77,8 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
     current_user.performer_role?
     @customer_task = Task.find(response_params[:task_id])
     @response = ResponseList.new(response_params)
+    ResponseList.response_status = 'created'
+
     @response.performer_id = current_user.id
     if @response.save
       redirect_to @customer_task
@@ -85,6 +88,18 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
       #create here
     end
   end
+
+  def add_review
+    @customer_task = Task.find(review_params[:task_id])
+    @review = Review.new(review_params)
+    @review.user_reviewed = @customer_task.performer_id
+    if @review.save
+      redirect_to myprofile_task_path(@customer_task), success: 'Вы оставили отзыв'
+    else
+      redirect_to myprofile_task_path(@customer_task), error: 'Вы не оставили отзыв'
+    end
+  end
+
 
 
   private
@@ -115,6 +130,8 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
   def set_customer_task
     @customer_task = Task.find(params[:task_id])
   end
-
+  def review_params
+    params.permit(:text, :task_id)
+  end
 
 end

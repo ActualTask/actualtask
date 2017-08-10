@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
     resources :tasks do
       patch 'add_response', action: :add_response, controller: 'tasks'
+      patch 'add_review', action: :add_review, controller: 'tasks'
+
     end
     #custom route for task_controller.responses
     resources :tags, only: [:show]
@@ -29,14 +31,15 @@ Rails.application.routes.draw do
     resources :infos, only: [:show]
     resources :performers
     resources :comments
-    resources :searches
+
 
     namespace :myprofile do
       resources :infos, except: [:destroy]
       resources 'customer_tasks', :tasks, :controller=>'customer_tasks', as: 'tasks' do
         put 'accept_response', action: :accept_response, controller: 'customer_tasks'
-        put 'decline_response', action: :decline_response, controller: 'customer_tasks'
-        patch 'add_review', action: :add_review, controller: 'customer_tasks'
+        put 'decline_response', action: :decline_response, controller: 'customer_tasks' , method: :delete
+
+
 
       end
 

@@ -27,12 +27,12 @@
 
 
 
-  <section class="post-body">
+  <section c lass="post-body">
     <%= @task.body.html_safe %>
   </section>
 </article>
 
-  <% if current_user.performer_role&&current_user.id!=@task.user_id %>
+  <% if current_user.performer_role&&current_user.id!=@task.user_id%>
       <%= render 'responses' %>
 
 
