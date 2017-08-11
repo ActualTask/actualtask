@@ -27,14 +27,15 @@
 
 
 
-  <section c lass="post-body">
+  <section class="post-body">
     <%= @task.body.html_safe %>
   </section>
 </article>
+  <% if current_user.performer_role&&current_user.id!=@task.user_id?%>
+    <% if current_user.responded_tasks.ids.find(@task).any?%>
 
-  <% if current_user.performer_role&&current_user.id!=@task.user_id%>
-      <%= render 'responses' %>
+        <%= render 'responses' %>
 
 
 <% end %>
-
+<%end%>

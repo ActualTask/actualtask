@@ -1,7 +1,7 @@
 <h1><%= @tag.name %></h1>
 
-<% if @tag.posts.empty? %>
-<h2>Заданий нет</h2>
+<% if @tag.tasks.empty? %>
+<h2>Заданий с таким тегом нет, возможно, они были удалены</h2>
 <% else %>
-<%= render @posts %>
+<%= render @tasks %>
 <% end %>

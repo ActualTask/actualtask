@@ -52,7 +52,8 @@ end
 
   def add_response
     current_user.performer_role?
-    @task = Task.find(response_params[:task_id])
+
+        @task = Task.find(response_params[:task_id])
     @response = ResponseList.new(response_params)
     @response.performer_id = current_user.id
     if @response.save
@@ -68,7 +69,13 @@ end
   def add_review
     @customer_task = Task.find(review_params[:task_id])
     @review = Review.new(review_params)
-    @review.user_reviewed = @customer_task.performer_id
+    if current_user.id == @customer_task.user_id
+      @review.user_id = @customer_task.performer_id
+    end
+    if current_user.id == @customer_task.performer_id
+      @review.user_id = @customer_task.user_id
+    end
+    @review.user_reviewed = current_user.id
     if @review.save
       redirect_to myprofile_task_path(@customer_task), success: 'Вы оставили отзыв'
     else

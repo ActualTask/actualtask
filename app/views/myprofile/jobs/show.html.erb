@@ -29,6 +29,7 @@
 
   <% if @task.task_status=='done' %>
   <div>Задание выполнено и ожидает проверки</div>
+      <%= render 'review' %>
 <% end %>
 </article>
  <div><%= @response.response_text %></div>
@@ -43,6 +44,6 @@
 <% end %>
 
 
-<%= render 'review' %>
+
 
 
