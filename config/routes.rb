@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
- # get 'auth/:provider/callback', to: 'sessions#create'
+  mount ActionCable.server => '/cable'
+
+
+  # get 'auth/:provider/callback', to: 'sessions#create'
  # get 'auth/failure', to: redirect('/')
  # get 'signout', to: 'sessions#destroy', as: 'signout'
 
@@ -17,6 +20,7 @@ Rails.application.routes.draw do
     devise_for :users
 
 
+
     root 'tasks#index'
 
 
@@ -31,6 +35,13 @@ Rails.application.routes.draw do
     resources :infos, only: [:show]
     resources :performers
     resources :comments
+    resources :disputes do
+    resource :dispute_users
+    resources :messages
+      end
+end
+
+
 
 
     namespace :myprofile do
@@ -47,6 +58,9 @@ Rails.application.routes.draw do
         post 'task_done', action: :task_done, controller: 'jobs'
         post 'cancel_response', action: :cancel_response, controller: 'jobs'
         post 'cancel_job', action: :cancel_job, controller: 'jobs'
+        resources :disputes
+        resource :dispute_users
+
 
 
       end
@@ -72,4 +86,4 @@ Rails.application.routes.draw do
 
     end
   end
- end
+

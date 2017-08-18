@@ -26,6 +26,14 @@ gem 'acts_as_commentable_with_threading'
 gem 'closure_tree'
 gem 'filterrific'
 gem 'will_paginate'
+gem 'redis'
+gem 'therubyracer'
+gem 'execjs'
+gem 'coffee-script-source', '1.9.0'
+
+
+
+
 
 # Use geocoder for locations
 gem 'geocoder'

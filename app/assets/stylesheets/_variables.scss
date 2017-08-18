@@ -82,6 +82,14 @@
 }
 
 
+#messages {
+  max-height: 450px;
+  overflow-y: auto;
+  .avatar {
+    margin: 0.5rem;
+  }
+}
+
 // General variable structure
 //
 // Variable format should follow the `$component-modifier-state-property` order.
