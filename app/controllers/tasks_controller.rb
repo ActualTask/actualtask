@@ -5,8 +5,9 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
+    @search = Task.search(params[:q])
     @posted_tasks = Task.where(tasks_verified: 'verified')
-    @tasks = @posted_tasks.paginate(page: params[:page], per_page: 5)
+    @posted_tasks = @search.result
 end
 
     def show

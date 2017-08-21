@@ -13,6 +13,8 @@ end
 gem 'trix'
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
+gem 'ransack'
+gem 'jquery-ui-rails'
 
 gem 'ancestry'
 gem 'rails-assets-tether', '>= 1.3.3'
