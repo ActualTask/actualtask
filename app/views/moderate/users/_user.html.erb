@@ -1,0 +1,18 @@
+<%# t.text "name"
+    t.text "surname"
+    t.text "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "dob"
+    t.text "about"
+    t.string "location"
+    t.integer "user_id" %>
+<article class="task">
+  <section class="task-head">
+    <h2><%= link_to user.info.name+user.info.surname, moderate_user_path(user) %></h2>
+    <small>
+      <time>Uploaded <%= user.performer.created_at.to_date.strftime("%d %B, %Y") %></time>
+    </small>
+  </section>
+
+</article>

@@ -1,0 +1,33 @@
+<%# t.text "name"
+    t.text "surname"
+    t.text "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "dob"
+    t.text "about"
+    t.string "location"
+    t.integer "user_id"%>
+<article class="task">
+  <section class="task-head">
+    <h1><%= @user.info.name+' '+@user.info.surname %></h1>
+
+    <small>
+      <time>Uploaded<%= @user.performer.created_at.to_date.strftime("%d %B, %Y") %></time>
+
+
+    </small>
+  </section>
+  <section>
+    <div>Phone: <%= @user.info.phone %></div>
+    <div>Day of birth: <%= @user.info.dob %></div>
+    <div>About:<br> <%= @user.info.about %></div>
+    <div>
+      <%= image_tag @user.performer.photo_id_1 %>
+      <%= image_tag @user.performer.photo_id_2 %>
+    </div>
+  </section>
+<hr>
+  <section>
+    <%= render 'moderate/users/form' %>
+  </section>
+</article>

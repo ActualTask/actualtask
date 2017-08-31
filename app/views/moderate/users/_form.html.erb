@@ -1,0 +1,5 @@
+
+<%= form_for [:moderate, @user], {action: 'update'} do |f| %>
+    <%= f.radio_button :performer_role, :value => true %> <%= f.label :Verify %>
+    <%= f.submit 'Submit' %>
+<% end %>

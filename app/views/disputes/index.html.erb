@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>disputes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @disputes.each do |dispute| %>
+      <tr>
+        <td><%= dispute.name %></td>
+        <td><%= link_to 'Show', dispute %></td>
+        <td><%= link_to 'Edit', edit_dispute_path(dispute) %></td>
+        <td><%= link_to 'Destroy', dispute, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Join", dispute_dispute_users_path(dispute), method: :post %></td>
+        <td><%= link_to "Leave", dispute_dispute_users_path(dispute), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dispute', new_dispute_path %>

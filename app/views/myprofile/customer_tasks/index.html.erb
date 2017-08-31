@@ -1,0 +1,15 @@
+<h1><%= t('.title') %></h1>
+
+<section id='tasks'>
+  <%= render  @tasks %>
+</section>
+
+<%= link_to 'создать спор', new_dispute_path  %>
+
+
+<%= will_paginate @tasks, renderer: 'BootstrapPaginationHelper::LinkRenderer' %>
+
+
+
+
+

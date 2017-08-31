@@ -1,0 +1,79 @@
+<article class="task">
+  <section class="task-head">
+    <h1><%= @customer_task.title %></h1>
+
+
+    <% @customer_task.locations.each do |loc| %>
+        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{loc.latitude}%2C#{loc.longitude}&key=AIzaSyBdk5XNuueyFw1PSv5QCdWTCRiVmKkDhVY" %>
+    <% end %>
+    <p align="right"><%= @customer_task.price %></p>
+
+    <small>
+      <time><%= @customer_task.created_at.to_date.strftime("%d %B, %Y") %></time>
+      <% if @customer_task.category.present? %>
+          |
+          <%= link_to current_user.info.name+' '+current_user.info.surname, info_path(current_user.info)  %>
+
+          |
+          <%= link_to @customer_task.category.name, @customer_task.category %>
+      <% end %>
+      <% if user_signed_in? && current_user.id==@customer_task.user_id %>
+                    |
+          <%= link_to 'Изменить', edit_myprofile_task_path(@customer_task) %>
+          |
+          <%= link_to 'Удалить', myprofile_task_path(@customer_task), method: :delete, data: { confirm: 'Вы уверены?' } %>
+          |
+      <% end %>
+    </small>
+  </section>
+
+
+
+
+  <section class="post-body">
+    <%= @customer_task.body.html_safe %>
+  </section>
+
+</article>
+
+<% if @customer_task.attachments? %>
+    <p>Файлы</p>
+    <ul>
+<% @customer_task.attachments.each do |att| %>
+          <li><%= link_to(image_tag(att.thumb.url, alt: 'File'), att.url, target: '_blank') %></li>
+    <% end %>
+      </ul>
+    <% end %>
+
+
+<article class="input">
+
+  <h2>Отклики</h2>
+        <selection class="task-input">
+
+
+  <% @customer_task.response_lists.each_with_index do |res, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= link_to res.user.info.name+' '+res.user.info.surname, info_path(res.user.info)  %></td>
+            <div><%= res.response_text %></div>
+            <% if res.performer_price.present? %>
+                <p></p>
+                <p> Исполнитель предложил свою цену</p>
+            <div><%= res.performer_price  %></div>
+            <% end %>
+
+          </tr>
+        </selection>
+
+</article>
+                <p></p>
+    <div class="form-group">
+      <%= link_to 'Принять', myprofile_task_accept_response_path(@customer_task,:response => {:id => res}), :method => :put, class: 'btn btn-primary' %>
+      <%= link_to 'Отклонить', myprofile_task_decline_response_path(@customer_task,:response => {:id => res}), :method => :put, class: 'btn btn-outline-secondary' %>
+    </div>
+
+
+<% end %>
+
+

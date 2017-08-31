@@ -1,0 +1,17 @@
+
+<article class="task">
+  <section class="task-head">
+    <h2><%= link_to task.title, moderate_task_path(task) %></h2>
+    <small>
+      <time><%= task.created_at.to_date.strftime("%d %B, %Y") %></time>
+      <% if task.category.present? %>
+        |
+        <%= link_to task.category.name, task.category %>
+      <% end %>
+    </small>
+  </section>
+
+  <section class="footer-summary">
+    <%= raw task.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge badge-primary' }.join(' ') %>
+  </section>
+</article>

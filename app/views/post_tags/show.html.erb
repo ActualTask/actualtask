@@ -1,0 +1,7 @@
+<h1><%= @post_tags.name %></h1>
+
+<% if @post_tags.post.empty? %>
+    <h2>Статей с таким тегом нет, возможно, они были удалены</h2>
+<% else %>
+    <%= render @posts %>
+<% end %>
