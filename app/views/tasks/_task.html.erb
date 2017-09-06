@@ -33,4 +33,6 @@
   <section class="footer-summary">
     <%= raw task.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge badge-primary' }.join(' ') %>
   </section>
+
+
 </article>

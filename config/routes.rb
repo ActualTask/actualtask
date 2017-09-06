@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
 
+
   # get 'auth/:provider/callback', to: 'sessions#create'
  # get 'auth/failure', to: redirect('/')
  # get 'signout', to: 'sessions#destroy', as: 'signout'
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
 #  get 'sessions/create'
 
  # get 'sessions/destroy'
+
 
   #get 'home/show'
   match '/anketa', to: 'infos#new', via:'get'

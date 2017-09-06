@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
+
+
   protect_from_forgery prepend: true
   add_flash_types :success, :danger, :infos, :warning
 
   before_action :set_locale
+
 
 
   private
@@ -30,6 +33,8 @@ class ApplicationController < ActionController::Base
  protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+
 
   protected
 

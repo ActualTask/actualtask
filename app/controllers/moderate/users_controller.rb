@@ -22,7 +22,10 @@ class Moderate::UsersController < Moderate::ModerateController
 
   def update
       if @user.update_attributes(user_params) #:tasks_verified=>params[:task][:tasks_verified]
+        @has_performer.user.activities.create action: 'performer_role', trackable: @has_performer
+
         redirect_to moderate_users_path, success:'Модерация прошла успешно'
+
       else
         flash.now[:danger] = 'Что то пошло не так'
         render :show
