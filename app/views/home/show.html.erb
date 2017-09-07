@@ -1,2 +1,21 @@
-<h1>Home#show</h1>
-<p>Find me in app/views/home/show.html.erb</p>
+<h1>All Tasks</h1>
+<div class="row row-padding">
+  <% @tasks.each do |t| %>
+    <div class=" col-lg-3 col-md-3 col-sm-6  col-padding">
+      <div class="card">
+        <div class="title"><a href=""><%=link_to t.title %></a></div>
+        <div class="deadline">До: <%= t.end_time.to_formatted_s(:short) %></div>
+        <div class="author">
+          <a href="#">
+            <div class="author-photo">
+              <img src="images/fa-01.png" alt="">
+            </div>
+            <div class="author-name"><%= link_to t.user.info.name+' '+t.user.info.surname, info_path(t.user.info)  %></div>
+          </a>
+        </div>
+        <div class="map"><img src="images/map-01.png" alt=""></div>
+        <div class="price"><%= t.price %> Руб </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -23,10 +23,16 @@
     </small>
   </section>
 
+  <% if @task.user_id!=current_user.id %>
+
   <%=render 'responses' %>
 
+      <% end %>
 
+  <% if @task.performer_id==current_user.id %>
+  <h2>Dsbcполнитель</h2>
 
+<% end %>
 
   <section class="post-body">
     <%= @task.body.html_safe %>

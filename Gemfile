@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'bootstrap', '~> 4.0.0.alpha6'
+# gem 'bootstrap', '~> 4.0.0.alpha6'
 source 'https://rails-assets.org' do
 end
 gem 'trix'
@@ -36,6 +36,9 @@ gem 'redis'
 gem 'therubyracer'
 gem 'execjs'
 gem 'coffee-script-source', '1.9.0'
+
+#Bootstrap 3 less
+gem 'less-rails-bootstrap'
 
 
 

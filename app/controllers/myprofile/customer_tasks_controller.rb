@@ -125,7 +125,7 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
   end
 
   def task_params
-    params.require(:task).permit(:title, :body, :all_tags, :price, :price_max, :price_min, :category_id, :remote_attachments_url, :remove_attachments, {attachments: []},  :locations_attributes => [:id, :address, :_destroy] )
+    params.require(:task).permit(:title, :start_time, :end_time, :body, :all_tags, :price, :price_max, :price_min, :category_id, :remote_attachments_url, :remove_attachments, {attachments: []},  :locations_attributes => [:id, :address, :_destroy] )
   end
 
   def response_params

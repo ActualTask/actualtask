@@ -16,7 +16,7 @@ Rails.application.routes.draw do
  # get 'sessions/destroy'
 
 
-  #get 'home/show'
+  get 'home/show'
   match '/anketa', to: 'infos#new', via:'get'
 
 
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
 
 
-    root 'tasks#index'
+    root 'home#show'
 
     namespace :blog do
       resources :posts

@@ -1,13 +1,13 @@
 
-//= require_tree
-//= require_self
-//=
-//= require trix
-//= require jquery-ui
-@import "variables";
+/*
+*= require_tree
+*= require_self
+*= require trix
+*= require jquery-ui
+*= require custom_bootstrap/custom_bootstrap
+*/
 
-
-//@import "bootstrap";
+/*@import "bootstrap";*/
 
 .strike {
   display: block;
