@@ -102,7 +102,7 @@ end
 
 
   def task_params
-    params.require(:task).permit(:title, :body, :all_tags, :price, :price_max, :price_min, :category_id, {attachments: []},  :location_attributes => [:address, :_destroy, :id, :task_id]  )
+    params.require(:task).permit(:title, :body, :all_tags, :price, :price_max, :price_min, :category_id, :any_price, {attachments: []},  :location_attributes => [:address, :_destroy, :id, :task_id]  )
   end
 
   def response_params
