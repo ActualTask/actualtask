@@ -1,4 +1,7 @@
 class Info < ApplicationRecord
+
+  validates :name, :presence => true
+  validates :surname, :phone, :address, :presence => true
   belongs_to :user
   mount_uploader :avatar, AvatarUploader
 
@@ -10,7 +13,6 @@ class Info < ApplicationRecord
       obj.country_code = geo.country_code
     end
   end
-  validates_presence_of  :name, :surname, :phone
-  after_validation :geocode
 
+  after_validation :geocode
 end

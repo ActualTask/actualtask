@@ -23,11 +23,7 @@
           <div class="map">
             <%= task_map t %>
           </div>
-          <%if t.any_price.present? %>
-              <div class="price">Договорная цена</div>
-              <% else %>
-          <div class="price"><%= t.price %> Руб </div>
-              <% end %>
+          <div class="price"><%= t.price %> Руб</div>
         </div>
       </div>
   <% end %>

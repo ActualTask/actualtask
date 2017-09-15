@@ -9,21 +9,7 @@
     <p align="right"><%= @customer_task.price %></p>
 
     <small>
-      <time><%= @customer_task.created_at.to_date.strftime("%d %B, %Y") %></time>
-      <% if @customer_task.category.present? %>
-          |
-          <%= link_to current_user.info.name+' '+current_user.info.surname, info_path(current_user.info)  %>
-
-          |
-          <%= link_to @customer_task.category.name, @customer_task.category %>
-      <% end %>
-      <% if user_signed_in? && current_user.id==@customer_task.user_id %>
-                    |
-          <%= link_to 'Изменить', edit_myprofile_task_path(@customer_task) %>
-          |
-          <%= link_to 'Удалить', myprofile_task_path(@customer_task), method: :delete, data: { confirm: 'Вы уверены?' } %>
-          |
-      <% end %>
+      <%= task_info @customer_task %>
     </small>
   </section>
 

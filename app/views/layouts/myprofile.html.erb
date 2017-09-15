@@ -4,8 +4,9 @@
   <title>Task</title>
   <%= csrf_meta_tags %>
 
- <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6YQnOEM4h6Yw2T32NNj7eMHEPBpY1RQw&libraries=places"></script>
 </head>
 
 <body  style="padding-top: 50px;">
@@ -34,25 +35,22 @@
         </ul>
 
         <% if user_signed_in? %>
-
-
             <div class="btn-toolbar pull-right">
-              <%= link_to 'Новое задание', new_myprofile_task_path, class: "btn btn-border navbar-btn" %>
               <div class="btn-group">
                 <%= link_to "Выход", destroy_user_session_path, method: :delete, class: "btn btn-border navbar-btn" %>
               </div>
             </div>
 
-      <% else %>
-      <div class="btn-toolbar pull-right">
-          <div class="btn-group">
-            <%= link_to "Присоедениться", new_user_registration_path, class: "btn btn-border navbar-btn" %>
-          </div>
-          <div class="btn-group">
-            <%= link_to "Войти", new_user_session_path, class: "btn btn-primary navbar-btn" %>
-          </div>
-        </div>
-            <% end %>
+        <% else %>
+            <div class="btn-toolbar pull-right">
+              <div class="btn-group">
+                <%= link_to "Присоедениться", new_user_registration_path, class: "btn btn-border navbar-btn" %>
+              </div>
+              <div class="btn-group">
+                <%= link_to "Войти", new_user_session_path, class: "btn btn-primary navbar-btn" %>
+              </div>
+            </div>
+        <% end %>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>

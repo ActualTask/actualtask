@@ -1,8 +1,10 @@
 class TasksController < ApplicationController
 
-
+  add_flash_types :error
 
   before_action :authenticate_user!
+
+  before_action :check_info, only: [:create, :new, :update]
 
 
   before_action :set_task, only: [:show, :edit, :update, :destroy]
@@ -102,7 +104,7 @@ end
 
 
   def task_params
-    params.require(:task).permit(:title, :body, :all_tags, :price, :price_max, :price_min, :category_id, :any_price, {attachments: []},  :location_attributes => [:address, :_destroy, :id, :task_id]  )
+    params.require(:task).permit(:title, :body, :all_tags, :price, :price_max, :price_min, :category_id, {attachments: []},  :location_attributes => [:address, :_destroy, :id, :task_id]  )
   end
 
   def response_params
@@ -111,6 +113,15 @@ end
 
   def review_params
     params.permit(:text, :task_id)
+  end
+
+  def check_info
+  if current_user.info.present?
+    redirect_to @task
+  else
+    flash.now[:danger] = 'Заполните данные'
+    redirect_to  new_myprofile_info_path, :error => 'Вы должны указать информацию о себе'
+  end
   end
 
   end

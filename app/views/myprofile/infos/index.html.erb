@@ -15,7 +15,7 @@
         <div><%= link_to 'Мои задания', myprofile_tasks_path, class: 'btn btn-outline-primary btn-sm' %></div>
     <% if current_user.performer.nil? %>
 
-        <div> <%= link_to 'Загрузить фото', new_performer_path, class: 'btn btn-outline-primary btn-sm'  %></div>
+        <div> <%= link_to 'Подтвердить паспортные данные', new_performer_path, class: 'btn btn-outline-primary btn-sm'  %></div>
     <% end %>
 
     <% if current_user.info.nil?%>
@@ -32,10 +32,14 @@
         <div><%= current_user.info.about %></div>
         <div><%= current_user.info.city+', '+current_user.info.country_code %></div>
     <% end %>
+
+
     <% if current_user.info.present? %>
 
     <%= link_to 'Редактировать', edit_myprofile_info_path(current_user.info), class: 'btn btn-outline-primary btn-sm'  %>
 <% end %>
+
+
 
     <%= render @tasks %>
 
