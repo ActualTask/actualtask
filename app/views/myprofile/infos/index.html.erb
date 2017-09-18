@@ -1,51 +1,51 @@
-<h1>Личный кабинет</h1>
-<%# t.text "name"
-    t.text "surname"
-    t.text "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.date "dob"
-    t.text "about"
-    t.string "location" %>
-<% if user_signed_in? %>
-        <% if current_user.performer_role %>
-            <div><%= link_to 'Мои Работы', myprofile_jobs_path, class: 'btn btn-outline-primary btn-sm' %></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class=" col-lg-12 col-md-12 col-sm-12  col-padding">
+            <h1 class="pull-left ">Личный кабинет</h1>
+              <ul class="nav navbar-nav pc-nav">
+                <% if user_signed_in? && current_user.performer_role %>
 
-        <% end %>
-        <div><%= link_to 'Мои задания', myprofile_tasks_path, class: 'btn btn-outline-primary btn-sm' %></div>
-    <% if current_user.performer.nil? %>
+                <li class=""><a href="<%= myprofile_jobs_path%>">Мои работы</a></li>
 
-        <div> <%= link_to 'Подтвердить паспортные данные', new_performer_path, class: 'btn btn-outline-primary btn-sm'  %></div>
-    <% end %>
+                 <% end %>
+                <li><a href="<%= myprofile_tasks_path%>">Мои задания</a></li>
 
-    <% if current_user.info.nil?%>
-        <%= link_to 'Заполнить личные данные', new_myprofile_info_path, class: 'btn btn-outline-primary btn-sm' %>
-    <% else %>
 
-        <p></p>
-        <div>
-         <%= avatar_for(current_user) %>
-          </div>
-        <p></p>
-        <%= current_user.info.name %>
-         <%= current_user.info.surname %>
-        <div><%= current_user.info.about %></div>
-        <div><%= current_user.info.city+', '+current_user.info.country_code %></div>
-    <% end %>
+                  <% if current_user.performer.nil? %>
+                <li><a href="<%=new_performer_path%>">Подтвердить паспортные данные</a></li>
+
+
+                  <% end %>
+
+                <% if current_user.info.nil?%>
+                <li><a href="<%= new_myprofile_info_path%>">Заполнить паспортные данные</a></li>
+              </ul>
+      </div>
+ <% else %>
+
+<div class=" col-lg-12 col-md-12 col-sm-12  col-padding">
+    <div class="pc-photo pull-left">
+      <%= image_tag current_user.info.avatar_url %>
+    </div>
+    <div class="pc-info pull-left">
+      <p><%= current_user.info.name+ ' '+current_user.info.surname  %></p>
+      <p><%= current_user.info.about %></p>
+      <p><%= current_user.info.city+', '+current_user.info.country_code %></p>
+                <% end %>
 
 
     <% if current_user.info.present? %>
 
-    <%= link_to 'Редактировать', edit_myprofile_info_path(current_user.info), class: 'btn btn-outline-primary btn-sm'  %>
-<% end %>
+      <a href=" <%= edit_myprofile_info_path(current_user.info)%>">Редактировать</a>
+    <% end %>
+              </div>
+        </div>
+    </div>
+</div>
+<%= render @tasks %>
 
 
 
-    <%= render @tasks %>
-
-
-
-<% end %>
 
 
 

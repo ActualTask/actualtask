@@ -9,7 +9,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: localhost
   username: actualtask
-  password: actualtask
+  password: Umepabs80@
   timeout: 5000
 
 development:

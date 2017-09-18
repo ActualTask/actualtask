@@ -8,6 +8,9 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
 
   before_action :set_customer_task, only: [:accept_response, :decline_response]
 
+  before_action :check_info, only: [:create, :new, :update]
+
+
   def index
     @posted_tasks = current_user.tasks
     @tasks = @posted_tasks.paginate(page: params[:page], per_page: 5)
@@ -140,6 +143,15 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
   end
   def review_params
     params.permit(:text, :task_id)
+  end
+
+  def check_info
+    if current_user.info.present?
+      redirect_to @task
+    else
+      flash.now[:danger] = 'Заполните данные'
+      redirect_to  new_myprofile_info_path, :error => 'Вы должны указать информацию о себе'
+    end
   end
 
 end
