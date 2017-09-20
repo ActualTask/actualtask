@@ -1,9 +1,18 @@
 <h1>Анкета</h1>
-<article class="anketa">
-      <div><%= @info.name+' '+@info.surname %></div>
-      <div><%= @info.city+' '+@info.country_code %></div>
-      <div><%= @info.about %></div>
+<div class=" col-lg-12 col-md-12 col-sm-12  col-padding">
+  <div class="pc-photo pull-left">
+    <% if @info.avatar.present? %>
+
+        <%= image_tag @info.avatar.url(:thumb), class: 'ipc-photo pull-left' %>
+        </div>
+
+<div class="pc-info pull-left">
+      <p><%= @info.name+' '+@info.surname %></p>
+      <p><%= @info.city+' '+@info.country_code %></p>
+      <p><%= @info.about %></p>
 
 
-</article>
+</div>
+        </div>
+    <% end %>
 

@@ -27,38 +27,7 @@
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-6 center-block">
       <div class="login-block">
-        <h2>Вход</h2>
-
-        <form class="new_user" id="new_user" action="/en/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="X/vQ2zsqua/a85IjDxqjQ/JFmVy6M/Y4FrktwfumH0sWmB//hSXy+N5ZXZofJ8jvre8KAChkriEHoeqCAM/QFg==" />
-          <div class="field form-group">
-            <label for="user_email">Email</label><br />
-            <input class="form-control" autofocus="autofocus" type="email" value="" name="user[email]" id="user_email" />
-          </div>
-
-          <div class="field form-group">
-            <label for="user_password">Пароль</label><br />
-            <input class="form-control" autocomplete="off" type="password" name="user[password]" id="user_password" />
-          </div>
-
-          <div class="field form-group">
-            <input class="form-control" name="user[remember_me]" type="hidden" value="0" /><input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me" />
-            <label for="user_remember_me">Запомнить меня</label>
-          </div>
-
-          <div class="actions">
-            <input class="btn btn-primary btn-block" type="submit" name="commit" value="Log in" data-disable-with="Log in" />
-          </div>
-        </form>
-        <div>
-        <a id="sign_in" href="/auth/google_oauth2">Войти с помощью Google</a>
-      </div>
-
-
-        <a href="/en/users/sign_up">Создать аккаунт</a><br />
-
-        <a href="/en/users/password/new">Забыли пароль?</a><br />
-
-        <a href="/en/users/confirmation/new">Не получили письмо с подтверждением?</a><br />
+        <%= yield %>
       </div>
     </div>
   </div>

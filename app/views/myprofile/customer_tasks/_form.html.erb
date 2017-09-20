@@ -61,7 +61,7 @@
     </div>
 
     <div class="form-group">
-      <%=f.file_field :attachments, multiple: true %>
+      <%=f.file_field :attachments,  multiple: true %>
       <%= label_tag :remove_attachments do %>
           Remove image
           <%= f.check_box :remove_attachments %>
@@ -69,7 +69,7 @@
           </div>
 
     <div class="form-group">
-      <%= f.submit t('.submit', action: @customer_task.new_record? ? t('common.create') : t('common.edit')), class: 'btn btn-primary' %>
-      <%= link_to t('common.back'), :back, class: 'btn btn-outline-secondary' %>
+      <%= f.submit t('.submit', action: @customer_task.new_record? ? t('common.create') : t('common.edit')), class: 'btn btn-primary btn' %>
+      <%= link_to t('common.back'), :back, class: 'btn btn-primary btn' %>
     </div>
 <% end %>

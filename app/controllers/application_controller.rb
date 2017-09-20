@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
 
-  protect_from_forgery prepend: true
+  # protect_from_forgery prepend: true
   add_flash_types :success, :danger, :infos, :warning
 
   before_action :set_locale
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   def default_url_options(options = {})
     { locale: I18n.locale }.merge options
   end
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
   helper_method :google_user
 
   def google_user
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
 
   end
 
- protect_from_forgery with: :exception
+# protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 

@@ -51,11 +51,6 @@ Rails.application.routes.draw do
     resource :dispute_users
     resources :messages
       end
-end
-
-
-
-
     namespace :myprofile do
       resources :infos, except: [:destroy]
       resources 'customer_tasks', :tasks, :controller=>'customer_tasks', as: 'tasks' do
@@ -97,5 +92,10 @@ end
 
 
     end
+end
+
+
+
+
   end
 

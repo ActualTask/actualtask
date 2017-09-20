@@ -19,27 +19,27 @@
 
                 <% if current_user.info.nil?%>
                 <li><a href="<%= new_myprofile_info_path%>">Заполнить паспортные данные</a></li>
+                    <% end %>
               </ul>
       </div>
- <% else %>
+ <% if current_user.info.present? %>
 
 <div class=" col-lg-12 col-md-12 col-sm-12  col-padding">
     <div class="pc-photo pull-left">
-      <%= image_tag current_user.info.avatar_url %>
+      <% if current_user.info.avatar.present? %>
+
+    <%= image_tag current_user.info.avatar.url(:thumb), class: 'ipc-photo pull-left' %>
     </div>
+          <% end %>
     <div class="pc-info pull-left">
       <p><%= current_user.info.name+ ' '+current_user.info.surname  %></p>
       <p><%= current_user.info.about %></p>
       <p><%= current_user.info.city+', '+current_user.info.country_code %></p>
-                <% end %>
-
-
-    <% if current_user.info.present? %>
 
       <a href=" <%= edit_myprofile_info_path(current_user.info)%>">Редактировать</a>
-    <% end %>
               </div>
         </div>
+      <% end %>
     </div>
 </div>
 <%= render @tasks %>

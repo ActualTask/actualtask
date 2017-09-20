@@ -17,6 +17,8 @@ gem 'ransack'
 gem 'jquery-ui-rails'
 gem 'public_activity'
 gem 'rails_exception_handler', "~> 2"
+gem 'russian', '~> 0.6.0'
+
 
 
 
