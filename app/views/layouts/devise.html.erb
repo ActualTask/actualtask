@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login</title>
+
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+
+</head>
+<body style="padding-top: 64px;" class="login-bg">
+<div class="container-fluid">
+  <nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="<% link_to root_path%>">
+          <%=image_tag ("logo-white.png"), height: '30'%>
+        </a>
+        <a class="navbar-brand beta beta-login">beta</a>
+      </div>
+    </div><!-- /.container-fluid -->
+  </nav>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-6 center-block">
+      <div class="login-block">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

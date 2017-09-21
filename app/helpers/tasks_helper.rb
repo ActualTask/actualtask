@@ -6,4 +6,25 @@ module TasksHelper
       yield(tag, classes[index.round])
     end
   end
+
+
+  def task_info(task)
+
+    info = "<time>#{task.created_at.to_date.strftime('%d %B, %Y')}</time> "
+
+    if task.user.info.present?
+      info += " | "
+      info += link_to task.user.info.name+' '+task.user.info.surname, info_path(task.user.info)
+    end
+    if task.category.present?
+      info += " | "+(link_to task.category.name, task.category)
+    end
+    if user_signed_in? && current_user.id==task.user_id
+      info += " | "+(link_to 'Изменить', edit_myprofile_task_path(task))+" | "
+      info += (link_to 'Удалить', myprofile_task_path(task), method: :delete, data: { confirm: 'Вы уверены?' })+" | "
+    end
+
+    info.html_safe
+  end
+
 end

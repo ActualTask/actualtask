@@ -1,0 +1,11 @@
+<h1>Activities</h1>
+<tbody>
+<% @activities.each_with_index do |activity, index| %>
+    <tr>
+    <td><%= index + 1 %></td>
+    <td><%= ActivityPresenter.new(activity, self).render_activity %></td>
+    </tr>
+<% end %>
+</tbody>
+
+

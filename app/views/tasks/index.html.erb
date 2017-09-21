@@ -1,24 +1,71 @@
 <h1><%= t('.title') %></h1>
 <% if current_user.admin? %>
-    <%= link_to 'Админ Панель', admin_categories_path, class: 'btn btn-outline-primary btn-sm' %>
+
+    <%= link_to 'Создать категорию', admin_categories_path, class: 'btn btn-outline-primary btn-sm' %>
 <% end %>
 
-    <% if user_signed_in? %>
+<% if current_user.moderator? %>
 
-    <%= link_to 'Новое задание', new_task_path, class: 'btn btn-outline-primary btn-sm' %>
+<%= link_to 'Проверить пользователей', moderate_users_path, class: 'btn btn-outline-primary btn-sm' %>
+<%= link_to 'Проверить задания', moderate_tasks_path, class: 'btn btn-outline-primary btn-sm' %>
+
+<% else %>
 
 
-<% end %>
+
+
+
 
 
 <section id='tasks'>
-  <%= render @tasks %>
+  <p></p>
+  <table class="filter">
+
+    <%= search_form_for @search do |f| %>
+      <tr>
+       <th> <%= f.label :title_cont, "Название"  %>
+        <%= f.text_field :title_cont %>
+       </th>
+
+
+       <th> <%= f.label :price_gteq, "Цена от"  %>
+        <%= f.text_field :price_gteq %>
+       </th>
+       <th> <%= f.label :price_gteq, "До"%>
+        <%= f.text_field :price_lteq %>
+       </th>
+      </tr>
+      </table>
+        <p></p>
+        <p>
+        </p>
+
+
+
+      <div class="actions"><%= f.submit "Поиск" %></div>
+<p></p>
+  <% end %>
+
+  <table id class="tasks">
+    <tr>
+      <th><%= sort_link @search, :title, "Task name" %>|</th>
+      <th><%= sort_link @search, :created_at, "Release" %>|</th>
+      <div id="price">
+      <th><%= sort_link @search, :price, "Price" %>|</th>
+      </div>
+    </tr>
+  </table>
+
+
+
+  <%= render @posted_tasks %>
+
+
 </section>
 
-<%= will_paginate @tasks, renderer: 'BootstrapPaginationHelper::LinkRenderer' %>
-
-<script id="dsq-count-scr" src="//blogdevsimple.disqus.com/count.js" async></script>
 
 
 
+
+<% end %>
 

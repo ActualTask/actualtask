@@ -12,6 +12,8 @@ class Moderate::TasksController < Moderate::ModerateController
 
   def update
     if @task.update_attributes(task_params) #:tasks_verified=>params[:task][:tasks_verified]
+
+      @task.user.activities.create action: 'task_verified', trackable: @task
       redirect_to moderate_tasks_path, success:'Модерация прошла успешно'
     else
       flash.now[:danger] = 'Что то пошло не так'

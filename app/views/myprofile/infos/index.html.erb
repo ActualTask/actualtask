@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class=" col-lg-12 col-md-12 col-sm-12  col-padding">
+            <h1 class="pull-left ">Личный кабинет</h1>
+              <ul class="nav navbar-nav pc-nav">
+                <% if user_signed_in? && current_user.performer_role %>
+
+                <li class=""><a href="<%= myprofile_jobs_path%>">Мои работы</a></li>
+
+                 <% end %>
+                <li><a href="<%= myprofile_tasks_path%>">Мои задания</a></li>
+
+
+                  <% if current_user.performer.nil? %>
+                <li><a href="<%=new_performer_path%>">Подтвердить паспортные данные</a></li>
+
+
+                  <% end %>
+
+                <% if current_user.info.nil?%>
+                <li><a href="<%= new_myprofile_info_path%>">Заполнить паспортные данные</a></li>
+                    <% end %>
+              </ul>
+      </div>
+ <% if current_user.info.present? %>
+
+<div class=" col-lg-12 col-md-12 col-sm-12  col-padding">
+    <div class="pc-photo pull-left">
+      <% if current_user.info.avatar.present? %>
+
+    <%= image_tag current_user.info.avatar.url(:thumb), class: 'ipc-photo pull-left' %>
+    </div>
+          <% end %>
+    <div class="pc-info pull-left">
+      <p><%= current_user.info.name+ ' '+current_user.info.surname  %></p>
+      <p><%= current_user.info.about %></p>
+      <p><%= current_user.info.city+', '+current_user.info.country_code %></p>
+
+      <a href=" <%= edit_myprofile_info_path(current_user.info)%>">Редактировать</a>
+              </div>
+        </div>
+      <% end %>
+    </div>
+</div>
+<%= render @tasks %>
+
+
+
+
+
+
+
+

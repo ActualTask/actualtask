@@ -1,5 +1,10 @@
 ru:
   common:
+  tasks:
+    form:
+    responses: 'Отклики'
+
+
     errors: 'При заполнении формы возникли ошибки'
     back: 'Назад'
     create: 'Создать'

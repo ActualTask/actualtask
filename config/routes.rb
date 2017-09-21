@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
- # get 'auth/:provider/callback', to: 'sessions#create'
+
+  get 'activities/index'
+
+  resources :activities
+  mount ActionCable.server => '/cable'
+
+
+
+  # get 'auth/:provider/callback', to: 'sessions#create'
+
  # get 'auth/failure', to: redirect('/')
  # get 'signout', to: 'sessions#destroy', as: 'signout'
 
@@ -8,7 +17,9 @@ Rails.application.routes.draw do
 
  # get 'sessions/destroy'
 
-  #get 'home/show'
+
+
+  get 'home/show'
   match '/anketa', to: 'infos#new', via:'get'
 
 
@@ -17,15 +28,56 @@ Rails.application.routes.draw do
     devise_for :users
 
 
-    root 'tasks#index'
 
 
-    resources :tasks
+    root 'home#show'
+
+    namespace :blog do
+      resources :posts
+      resources :pictures, only: [:create, :destroy]
+      resources :post_tags, only: [:show]
+
+    end
+
+    resources :tasks do
+      patch 'add_response', action: :add_response, controller: 'tasks'
+      patch 'add_review', action: :add_review, controller: 'tasks'
+
+    end
+    #custom route for task_controller.responses
+    resources :activities
     resources :tags, only: [:show]
     resources :categories, only: [:show]
-    resources :infos
+    resources :infos, only: [:show]
     resources :performers
     resources :comments
+    resources :disputes do
+    resource :dispute_users
+    resources :messages
+      end
+    namespace :myprofile do
+      resources :infos, except: [:destroy]
+      resources 'customer_tasks', :tasks, :controller=>'customer_tasks', as: 'tasks' do
+        put 'accept_response', action: :accept_response, controller: 'customer_tasks'
+        put 'decline_response', action: :decline_response, controller: 'customer_tasks' , method: :delete
+
+
+
+      end
+
+      resources :jobs do
+        post 'task_done', action: :task_done, controller: 'jobs'
+        post 'cancel_response', action: :cancel_response, controller: 'jobs'
+        post 'cancel_job', action: :cancel_job, controller: 'jobs'
+        resources :disputes
+        resource :dispute_users
+
+
+
+      end
+    end
+
+
 
 
     namespace :moderate do
@@ -35,7 +87,7 @@ Rails.application.routes.draw do
     end
 
     namespace :admin do
-      #Убрать админа, не забудь вынести пути и переделать контроллер
+
       resources :categories, except: [:show]
       resources :pictures, only: [:create, :destroy]
       resources :tasks
@@ -45,5 +97,11 @@ Rails.application.routes.draw do
 
 
     end
+
+end
+
+
+
+
   end
- end
+

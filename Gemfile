@@ -7,27 +7,54 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'bootstrap', '~> 4.0.0.alpha6'
+
+# gem 'bootstrap', '~> 4.0.0.alpha6'
 source 'https://rails-assets.org' do
 end
+
 gem 'trix'
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
+gem 'ransack'
+gem 'jquery-ui-rails'
+gem 'public_activity'
+gem 'rails_exception_handler', "~> 2"
+gem 'russian', '~> 0.6.0'
+
+
+
 
 gem 'ancestry'
 gem 'rails-assets-tether', '>= 1.3.3'
 gem 'rails', '~> 5.1.1'
 gem 'omniauth-google-oauth2'
 gem 'omniauth'
-gem 'omniauth'
+
 gem 'omniauth-accounts'
 gem 'cancancan'
 gem 'devise'
 gem 'acts_as_commentable_with_threading'
 gem 'closure_tree'
+
+gem 'filterrific'
+gem 'will_paginate'
+gem 'redis'
+gem 'therubyracer'
+gem 'execjs'
+gem 'coffee-script-source', '1.9.0'
+
+#Bootstrap 3 less
+gem 'less-rails-bootstrap'
+
+
+
+
+
+# Use geocoder for locations
+gem 'geocoder'
+gem 'jquery-rails'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-gem 'will_paginate', '~> 3.1.0'
+gem 'pg'
 # Use Puma as the app server
 # gem 'puma', '~> 3.7'
 gem 'passenger'
@@ -44,6 +71,11 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+
+gem 'nested_form_fields'
+gem 'onliner'
+
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

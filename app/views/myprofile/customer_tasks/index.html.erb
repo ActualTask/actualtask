@@ -1,0 +1,13 @@
+<h1><%= t('.title') %></h1>
+
+<section id='tasks'>
+  <%= render  @tasks %>
+</section>
+
+
+<%= will_paginate @tasks, renderer: 'BootstrapPaginationHelper::LinkRenderer' %>
+
+
+
+
+

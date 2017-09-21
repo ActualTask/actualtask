@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6YQnOEM4h6Yw2T32NNj7eMHEPBpY1RQw&libraries=places"></script>
+</head>
+
+<body  style="padding-top: 50px;">
+<div class="container-fluid">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="<%=root_path %>">
+          <%= image_tag 'logo.png', height: '30' %>
+        </a>
+        <a class="navbar-brand beta">beta</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class=""><a href="<%=tasks_path %>">Заказы</a></li>
+          <li><a href="#">Исполнители</a></li>
+        </ul>
+
+        <% if user_signed_in? %>
+            <div class="btn-toolbar pull-right">
+              <div class="btn-group">
+                <%= link_to "Выход", destroy_user_session_path, method: :delete, class: "btn btn-border navbar-btn" %>
+              </div>
+            </div>
+
+        <% else %>
+            <div class="btn-toolbar pull-right">
+              <div class="btn-group">
+                <%= link_to "Присоедениться", new_user_registration_path, class: "btn btn-border navbar-btn" %>
+              </div>
+              <div class="btn-group">
+                <%= link_to "Войти", new_user_session_path, class: "btn btn-primary navbar-btn" %>
+              </div>
+            </div>
+        <% end %>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <% flash.each do |name, message| %>
+          <div class="alert <%= (name) %>">
+            <button class="close" data-dismiss="alert">&times;</button>
+            <%= message %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <%= yield %>
+</div>
+</body>
+</html>

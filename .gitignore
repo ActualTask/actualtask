@@ -24,3 +24,6 @@
 #ignore logs and workspace
 passenger*
 .idea/workspace.xml
+
+.idea/tasks.xml
+/public/uploads/*

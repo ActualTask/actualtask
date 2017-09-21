@@ -11,7 +11,8 @@ class PerformersController < ApplicationController
       redirect_to root_path, success: 'Данные успешно загружены'
     else
       flash.now[:danger] = 'Загрузите фото'
-      redirect_to infos_path
+
+      redirect_to myprofile_infos_path
     end
   end
 
