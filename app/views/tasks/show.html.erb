@@ -2,11 +2,15 @@
   <section class="task-head">
     <h1><%= @task.title %></h1>
 
+    <div class="map">
+      <%= task_map @task %>
+    </div>
+
     <p align="right"><%= @task.price %> руб</p>
 
     <small>
       <%= task_info @task %>
-      >
+
     </small>
   </section>
 
@@ -17,7 +21,6 @@
       <% end %>
 
   <% if @task.performer_id==current_user.id %>
-  <h2>Dsbcполнитель</h2>
 
 <% end %>
 

@@ -2,10 +2,7 @@
   <section class="task-head">
     <h1><%= @customer_task.title %></h1>
 
-
-    <% @customer_task.locations.each do |loc| %>
-        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{loc.latitude}%2C#{loc.longitude}&key=AIzaSyBdk5XNuueyFw1PSv5QCdWTCRiVmKkDhVY" %>
-    <% end %>
+    <%= task_map @customer_task %>
     <p align="right"><%= @customer_task.price %></p>
 
     <small>

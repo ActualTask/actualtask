@@ -22,15 +22,15 @@
 
     <%= search_form_for @search do |f| %>
       <tr>
-       <th> <%= f.label :title_cont, "Title"  %>
+       <th> <%= f.label :title_cont, "Название"  %>
         <%= f.text_field :title_cont %>
        </th>
 
 
-       <th> <%= f.label :price_gteq, "Price min"  %>
+       <th> <%= f.label :price_gteq, "Цена от"  %>
         <%= f.text_field :price_gteq %>
        </th>
-       <th> <%= f.label :price_gteq, "Max"%>
+       <th> <%= f.label :price_gteq, "До"%>
         <%= f.text_field :price_lteq %>
        </th>
       </tr>
@@ -41,7 +41,7 @@
 
 
 
-      <div class="actions"><%= f.submit "Search" %></div>
+      <div class="actions"><%= f.submit "Поиск" %></div>
 <p></p>
   <% end %>
 

@@ -2,6 +2,11 @@
   <section class="task-head">
     <h1><%= @task.title %></h1>
 
+
+    <div class="map">
+      <%= task_map @task %>
+    </div>
+
     <small>
       <time><%= @task.created_at.to_date.strftime("%d %B, %Y") %></time>
       <% if @task.category.present? %>
@@ -10,9 +15,9 @@
       <% end %>
       <% if user_signed_in? && current_user.id==@task.user_id %>
           |
-          <%= link_to 'Изменить', edit_myprofile_jobs_path(@task) %>
+          <%= link_to 'Изменить', edit_myprofile_job_path(@task) %>
           |
-          <%= link_to 'Удалить', myprofile_jobs_path(@task), method: :delete, data: { confirm: 'Вы уверены?' } %>
+          <%= link_to 'Удалить', myprofile_job_path(@task), method: :delete, data: { confirm: 'Вы уверены?' } %>
       <% end %>
     </small>
   </section>
@@ -32,12 +37,15 @@
       <%= render 'review' %>
 <% end %>
 </article>
+
+<% if @response.present? %>
  <div><%= @response.response_text %></div>
 <% if @response.response_status == 'created' %>
     <%= button_to 'Выполнил', myprofile_job_task_done_path(@task),  class: 'btn btn-primary' %>
 
     <%= button_to 'Отозвать Отклик', myprofile_job_cancel_response_path(@task, 'response_id'=>@response.id), method: :post, class: 'btn btn-primary' %>
 <% end %>
+    <% end %>
 
 <% if current_user.id==@task.performer_id %>
     <%= button_to 'Отказаться от задания', myprofile_job_cancel_job_path(@task, 'response_id'=>@response.id), method: :post, class: 'btn btn-primary' %>

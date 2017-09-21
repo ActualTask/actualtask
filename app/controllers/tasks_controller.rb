@@ -6,6 +6,7 @@ class TasksController < ApplicationController
 
   before_action :check_info, only: [:create, :new, :update]
 
+  before_action :check_info, only: [:create, :new, :update]
 
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
@@ -70,7 +71,7 @@ end
     @response = ResponseList.new(response_params)
     @response.performer_id = current_user.id
     if @response.save
-      redirect_to @task
+      redirect_to myprofile_tasks_path
     else
       flash.now[:danger] = 'Что-то не так'
       render @task
