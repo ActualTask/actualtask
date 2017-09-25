@@ -38,4 +38,14 @@ class User < ApplicationRecord
       user.save!
     end
   end
+
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!(:validate => false)
+
+
+
+  end
+
 end

@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20170904130755) do
 
   # These are extensions that must be enabled in order to support this database
@@ -40,12 +39,12 @@ ActiveRecord::Schema.define(version: 20170904130755) do
   end
 
   create_table "comments", force: :cascade do |t|
-
+    t.string "commenter"
+    t.text "body"
     t.integer "task_id"
-    t.integer "user_id"
-    t.text "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_comments_on_task_id"
   end
 
   create_table "dispute_users", force: :cascade do |t|
@@ -88,30 +87,15 @@ ActiveRecord::Schema.define(version: 20170904130755) do
     t.datetime "updated_at", null: false
     t.date "dob"
     t.text "about"
-
-    t.integer "location_id"
+    t.string "location"
     t.integer "user_id"
-    t.float "latitude"
-    t.float "longitude"
-    t.string "city"
-    t.string "country_code"
-    t.string "address"
-    t.string "avatar"
   end
 
   create_table "locations", force: :cascade do |t|
-    t.float "latitude"
-    t.float "longitude"
-    t.string "location_name"
-    t.string "address"
-    t.string "country_code"
-    t.string "country"
-    t.string "city"
-    t.string "state"
-    t.string "postal_code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "task_id"
+    t.string "lat"
+    t.string "long"
+    t.string "location_name"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -156,7 +140,6 @@ ActiveRecord::Schema.define(version: 20170904130755) do
     t.datetime "updated_at", null: false
   end
 
-
   create_table "post_taggings", force: :cascade do |t|
     t.bigint "post_id"
     t.bigint "post_tag_id"
@@ -189,10 +172,6 @@ ActiveRecord::Schema.define(version: 20170904130755) do
     t.integer "performer_id"
     t.text "response_text"
     t.string "response_status"
-
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.decimal "performer_price"
   end
 
   create_table "responses", force: :cascade do |t|
@@ -221,7 +200,6 @@ ActiveRecord::Schema.define(version: 20170904130755) do
     t.index ["user_id"], name: "index_skills_on_user_id"
   end
 
-
   create_table "tables", force: :cascade do |t|
   end
 
@@ -244,7 +222,6 @@ ActiveRecord::Schema.define(version: 20170904130755) do
     t.integer "task_id"
   end
 
-
   create_table "task_locatings", force: :cascade do |t|
     t.integer "task_id"
     t.integer "location_id"
@@ -252,10 +229,11 @@ ActiveRecord::Schema.define(version: 20170904130755) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "title"
+    t.text "summary"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.json "attachments"
+    t.string "image"
     t.integer "category_id"
     t.integer "user_id"
     t.decimal "price_max"
@@ -268,8 +246,6 @@ ActiveRecord::Schema.define(version: 20170904130755) do
     t.datetime "finish_time"
     t.integer "performer_id"
     t.integer "moderator_id"
-
-    t.decimal "price"
     t.index ["category_id"], name: "index_tasks_on_category_id"
   end
 
@@ -287,14 +263,12 @@ ActiveRecord::Schema.define(version: 20170904130755) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.boolean "moderator", default: false
-
-    t.boolean "performer_role", default: true
+    t.boolean "performer_role", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "activities", "users"
   add_foreign_key "post_taggings", "post_tags"
   add_foreign_key "post_taggings", "posts"
 end
