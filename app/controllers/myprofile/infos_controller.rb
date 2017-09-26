@@ -40,6 +40,7 @@ class Myprofile::InfosController < Myprofile::MyprofileController
   end
 
   def show
+
   end
 end
 

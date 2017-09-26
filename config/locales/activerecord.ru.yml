@@ -1,9 +1,7 @@
 ru:
   activerecord:
     models:
-
-
-      tasks: 'Задание'
+      task: 'Задание'
     attributes:
       task:
         title: 'Название'

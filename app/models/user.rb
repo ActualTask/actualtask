@@ -23,6 +23,10 @@ class User < ApplicationRecord
   has_many :responded_tasks, :through => :response_lists, :source => :task, foreign_key: 'performer_id'
   has_many :activities
 
+  def welcome_send
+    WelcomeMailer.welcome_send(self).deliver
+  end
+
 
   def name
     email.split('@')[0]
@@ -39,13 +43,6 @@ class User < ApplicationRecord
     end
   end
 
-  def email_activate
-    self.email_confirmed = true
-    self.confirm_token = nil
-    save!(:validate => false)
-
-
-
-  end
+ 
 
 end
