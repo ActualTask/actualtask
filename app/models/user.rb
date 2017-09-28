@@ -3,7 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   include PublicActivity::Model
-  mount_uploader :avatar, AvatarUploader
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :confirmable, :validatable

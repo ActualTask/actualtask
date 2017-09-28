@@ -37,6 +37,7 @@
 
         <% if user_signed_in? %>
             <div class="btn-toolbar pull-right">
+              <%= link_to 'Новое задание', new_myprofile_task_path, class: "btn btn-border navbar-btn" %>
               <div class="btn-group">
                 <%= link_to "Выход", destroy_user_session_path, method: :delete, class: "btn btn-border navbar-btn" %>
               </div>

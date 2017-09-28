@@ -147,9 +147,9 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
 
   def check_info
     if current_user.info.present?
+      redirect_to @task
     else
-      flash.now[:danger] = 'Заполните данные'
-      redirect_to  new_myprofile_info_path, :error => 'Вы должны указать информацию о себе'
+      redirect_to(new_myprofile_info_path, {:flash => { :error => "Заполните информацию о себе!" }})
     end
   end
 

@@ -31,9 +31,10 @@
 
       <%=render 'responses' %>
 
- <% else %>
+ <% end %>
+
+<%if current_user.info==nil&&@task.user_id!=current_user.id %>
     <p>Для того чтобы откликнуться на задание, необходимо заполнить личные данные</p>
    <p><%= link_to "Заполнить", new_myprofile_info_path, class: 'btn btn-primary btn' %> </p>
-
 
 <% end %>

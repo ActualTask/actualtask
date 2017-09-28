@@ -4,7 +4,7 @@ class Myprofile::InfosController < Myprofile::MyprofileController
 
 
   def index
-    @infos = Info.new
+    @info = current_user.info
     @tasks = current_user.tasks
   end
 
