@@ -90,7 +90,7 @@ end
   if current_user.info.present?
   else
     flash.now[:danger] = 'Заполните данные'
-    redirect_to  new_myprofile_info_path, :error => 'Вы должны указать информацию о себе'
+    redirect_to  new_myprofile_info_path, :error => 'Вы должны указать информацию о себе', data: {confirm: 'Заполните личные данные?' }
   end
   end
 
