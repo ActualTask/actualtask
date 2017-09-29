@@ -26,4 +26,6 @@ passenger*
 .idea/workspace.xml
 
 .idea/tasks.xml
-/public/uploads/*
+public/uploads/*
+public/assets/*
+.idea/workspace.xml
