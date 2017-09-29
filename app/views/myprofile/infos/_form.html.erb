@@ -1,3 +1,15 @@
+<% if @info.errors.any? %>
+    <div class="alert alert-danger">
+      <h5><%= t('common.errors') %></h5>
+      <ul>
+        <% @info.errors.full_messages.each do |message|  %>
+            <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+
 
 
 <%= form_for [:myprofile, @info] do |f| %>
