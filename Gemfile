@@ -23,7 +23,6 @@ gem 'russian', '~> 0.6.0'
 
 
 
-
 gem 'ancestry'
 gem 'rails-assets-tether', '>= 1.3.3'
 gem 'rails', '~> 5.1.1'

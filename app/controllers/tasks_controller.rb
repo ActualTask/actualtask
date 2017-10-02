@@ -87,11 +87,9 @@ end
   end
 
   def check_info
-  if current_user.info.present?
-    redirect_to @task
-    else
+    if current_user.info.nil?
       redirect_to(new_myprofile_info_path, {:flash => { :error => "Заполните информацию о себе!" }})
-  end
+    end
   end
 
   end

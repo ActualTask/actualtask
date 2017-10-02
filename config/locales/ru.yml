@@ -12,18 +12,18 @@ ru:
   will_paginate:
     previous_label: '&larr; Туда'
     next_label: 'Сюда &rarr;'
-  posts:
+  tasks:
     index:
-      title: 'Статьи'
+      title: 'Задания'
   admin:
-    posts:
+    tasks:
       new:
-        title: 'Новая статья'
+        title: 'Новое задание'
       edit:
-        title: 'Редактирование статьи'
+        title: 'Редактирование задания'
       form:
         submit:
-          '%{action} статью'
+          '%{action} задание'
     categories:
       index:
         title: 'Категории'
