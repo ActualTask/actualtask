@@ -19,7 +19,6 @@ gem 'ransack'
 gem 'jquery-ui-rails'
 gem 'public_activity'
 gem 'rails_exception_handler', "~> 2"
-gem 'russian', '~> 0.6.0'
 
 
 
@@ -28,6 +27,7 @@ gem 'rails-assets-tether', '>= 1.3.3'
 gem 'rails', '~> 5.1.1'
 gem 'omniauth-google-oauth2'
 gem 'omniauth'
+gem 'rails-i18n', '~> 5.0.0'
 
 gem 'omniauth-accounts'
 gem 'cancancan'
