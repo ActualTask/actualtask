@@ -2,15 +2,37 @@ ru:
   activerecord:
     models:
       task: 'Задание'
+      info: 'Анкета'
     attributes:
+
       task:
         title: 'Название'
         body: 'Содержание'
         all_tags: 'Теги'
         price: 'Цена'
-      category:
+        start_time: 'Начать'
+        end_time: 'Закончить'
+        address: 'Адрес'
+        category: 'Категория'
         name: 'Название'
-        parent_id: 'Категория родитель'
+      info:
+        name: 'Имя'
+        surname: 'Фамилия'
+        address: 'Адрес'
+        phone: 'Телефон'
+        dob: 'Дата рождения'
+        about: 'О себе'
+        avatar: 'Аватар'
+      performer:
+        photo_id_1: 'Первое фото'
+        photo_id_2: 'Второе фото'
+      responces:
+        response_text: 'Отзыв'
+        responces: 'Отзыв'
+        performer_price: 'Ваша цена'
     errors:
       messages:
         blank: 'не может быть пустым'
+
+
+
