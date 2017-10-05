@@ -2,7 +2,7 @@ class Task < ApplicationRecord
 
 
   validates :title, :body, presence: true
-
+  validate :task_price_more_than_permited
   mount_uploaders :attachments, AttachmentsUploader
 
   scope :sorted_by, lambda { |sort_option|
@@ -92,6 +92,12 @@ class Task < ApplicationRecord
 
   def render_message(message)
     MessagesController.render partial: 'messages/message', locals: {message: message}
+  end
+
+  def task_price_more_than_permited
+    if price>500 && !user.performer_role?
+      errors.add(:price, "превышает разрешенную. Подтвердите данные для снятия лимита")
+    end
   end
 
 

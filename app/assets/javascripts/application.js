@@ -19,5 +19,5 @@
 //= require trix
 //= require twitter/bootstrap
 //= require nested_form_fields
-//= require_tree .
+// require_tree .
 
