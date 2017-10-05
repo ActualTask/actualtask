@@ -13,6 +13,9 @@ class TasksController < ApplicationController
 
 
 
+
+
+
   def index
     @search = Task.search(params[:q])
     @posted_tasks = Task.where(tasks_verified: 'verified')
@@ -91,6 +94,7 @@ end
       redirect_to(new_myprofile_info_path, {:flash => { :error => "Заполните информацию о себе!" }})
     end
   end
+
 
   end
 

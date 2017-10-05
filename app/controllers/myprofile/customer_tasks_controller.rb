@@ -31,7 +31,7 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
     if @customer_task.save
       redirect_to myprofile_task_path(@customer_task), success: 'Успех'
     else
-      flash.now[:danger]= task_params
+      flash.now[:danger]
       render :new
 
     end

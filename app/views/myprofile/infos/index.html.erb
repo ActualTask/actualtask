@@ -3,7 +3,7 @@
         <div class=" col-lg-12 col-md-12 col-sm-12  col-padding">
             <h1 class="pull-left ">Личный кабинет</h1>
               <ul class="nav navbar-nav pc-nav">
-                <% if user_signed_in? && current_user.performer_role %>
+                <% if user_signed_in?  %>
 
                 <li class=""><a href="<%= myprofile_jobs_path%>">Мои работы</a></li>
 
@@ -11,11 +11,15 @@
                 <li><a href="<%= myprofile_tasks_path%>">Мои задания</a></li>
 
 
-                  <% if current_user.performer.nil? %>
+                  <% if current_user.performer_role==false %>
                 <li><a href="<%=new_performer_path%>">Подтвердить паспортные данные</a></li>
 
+                    <% else %>
+                    <h2>Проверенный исполнитель</h2>
 
                   <% end %>
+
+
 
                 <% if current_user.info.nil?%>
                 <li><a href="<%= new_myprofile_info_path%>">Заполнить личные данные</a></li>
