@@ -10,6 +10,7 @@
     <% end %>
 
 <%= form_for [:myprofile, @customer_task], html: { multipart: true }  do |f| %>
+    <div class=" col-lg-6 col-md-6 col-sm-12 col-padding center-block">
 <div class="form-group">
   <%= f.label :title %>
   <%= f.text_field :title, placeholder: "Введите имя задания", class: 'form-control' %>
@@ -71,5 +72,6 @@
     <div class="form-group">
       <%= f.submit "Разместить", class: 'btn btn-primary btn' %>
       <%= link_to "Назад", :back, class: 'btn btn-primary btn' %>
+    </div>
     </div>
 <% end %>
