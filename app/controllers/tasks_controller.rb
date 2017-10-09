@@ -46,6 +46,23 @@ end
   end
 
 
+  def add_response
+    current_user.performer_role?
+    @task = Task.find(response_params[:task_id])
+    @response = ResponseList.new(response_params)
+
+    ResponseList.response_status = 'created'
+
+
+    @response.performer_id = current_user.id
+    if @response.save
+      redirect_to @task
+    else
+      flash.now[:danger] = 'Что-то не так'
+      render @task
+      #create here
+    end
+  end
 
 
   def edit
@@ -83,6 +100,10 @@ end
 
   def response_params
     params.permit(:response_text, :task_id, :performer_price)
+  end
+
+  def set_response_params
+    params.require(:response).permit(:id)
   end
 
   def review_params
