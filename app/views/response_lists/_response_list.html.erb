@@ -1,0 +1,22 @@
+
+  <% @responses.each do |r| %>
+
+
+  <%=link_to info_path(r.user.info) do %>
+
+      <div class="author-photo">
+        <% if r.user.info.avatar? %>
+            <%=  image_tag r.user.info.avatar.url(:thumb)  %>
+        <% else %>
+            <%= image_tag ("fa-01.png") %>
+        <% end %>
+      </div>
+      <div class="author-name">
+        <%= link_to r.user.info.name+' '+r.user.info.surname, info_path(r.user.info)  %>
+          <div class="123123"><%= response_list.response_text %></div>
+      </div>
+
+
+
+<% end %>
+<% end %>

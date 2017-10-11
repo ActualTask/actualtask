@@ -96,7 +96,16 @@ class Task < ApplicationRecord
 
   def task_price_more_than_permited
     if price>500 && !user.performer_role?
-      errors.add(:price, "превышает разрешенную. Подтвердите данные для снятия лимита")
+      errors.add(:price, "Превышает разрешенную. Подтвердите данные для снятия лимита")
+    end
+  end
+
+  def self.search(term)
+    if term
+
+      Task.where(id: Location.where('country=?',params[:location][:term]).select('task_id'))
+    else
+      order('id DESC')
     end
   end
 

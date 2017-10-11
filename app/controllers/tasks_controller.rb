@@ -19,11 +19,20 @@ class TasksController < ApplicationController
   def index
     @search = Task.search(params[:q])
     @posted_tasks = Task.where(tasks_verified: 'verified')
-    @posted_tasks = @search.result
+    @posted_tasks = if params[:location][:term]
+                      Task.where(id: Location.where('city=?',params[:location][:term]).select('task_id'))
+             else
+               Task.all
+
+             end
 end
 
     def show
-
+      if @task.user==current_user
+        @responses = @task.response_lists
+      else
+        @responses = @task.response_lists.where('performer_id=?',current_user.id)
+      end
   end
 
   def new
@@ -51,7 +60,7 @@ end
     @task = Task.find(response_params[:task_id])
     @response = ResponseList.new(response_params)
 
-    ResponseList.response_status = 'created'
+    @response.response_status = 'created'
 
 
     @response.performer_id = current_user.id
@@ -95,7 +104,7 @@ end
 
 
   def task_params
-    params.require(:task).permit(:title, :body, :all_tags, :price, :price_max, :price_min, :category_id, {attachments: []},  :location_attributes => [:address, :_destroy, :id, :task_id]  )
+    params.require(:task).permit(:title, :body, :all_tags, :price, :price_max, :price_min, :category_id, :term, {attachments: []},  :location_attributes => [:address, :_destroy, :id, :task_id]  )
   end
 
   def response_params
