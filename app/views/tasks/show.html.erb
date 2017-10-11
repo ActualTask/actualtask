@@ -24,7 +24,11 @@
   <section class="post-body">
     <%= @task.body.html_safe %>
   </section>
-</article>
+</article>passenger start
+
+<% if @task.task_status=='in work' %>
+    <h3>Задание уже выполняется </h3>
+    <% else %>
 
 
 <% if @task.user_id!=current_user.id&&current_user.info.present? %>
@@ -32,6 +36,7 @@
       <%=render 'responses' %>
 
  <% end %>
+    <% end %>
 
 <%if current_user.info==nil&&@task.user_id!=current_user.id %>
     <p>Для того чтобы откликнуться на задание, необходимо заполнить личные данные</p>
