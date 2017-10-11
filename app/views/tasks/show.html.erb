@@ -24,18 +24,22 @@
   <section class="post-body">
     <%= @task.body.html_safe %>
   </section>
-</article>passenger start
+</article>
 
 <% if @task.task_status=='in work' %>
     <h3>Задание уже выполняется </h3>
     <% else %>
 
 
-<% if @task.user_id!=current_user.id&&current_user.info.present? %>
+  <% if @task.user_id!=current_user.id&&current_user.info.present?&&current_user.response_lists==nil %>
 
-      <%=render 'responses' %>
-
- <% end %>
+        <%=render 'responses' %>
+   <% end %>
+    <% if @responses.present? %>
+        <% @responses.each do |r| %>
+          <%= render r %>
+        <% end %>
+    <% end %>
     <% end %>
 
 <%if current_user.info==nil&&@task.user_id!=current_user.id %>
