@@ -26,9 +26,15 @@
   </section>
 </article>
 
+<% if @task.price>500 && !current_user.performer_role?%>
+
+<p>Вы не можете отправить отзыв на это задание, так как цена перевышает лимит для Вашего аккаунта. Для того что бы снять ограничение пройдите проверку паспортных данных в личном кабинете</p>
+<%end %>
+
 <% if @task.task_status=='in work' %>
     <h3>Задание уже выполняется </h3>
-    <% else %>
+
+<% else %>
 
 
   <% if @task.user_id!=current_user.id&&current_user.info.present?&&current_user.response_lists==nil %>
@@ -45,5 +51,6 @@
 <%if current_user.info==nil&&@task.user_id!=current_user.id %>
     <p>Для того чтобы откликнуться на задание, необходимо заполнить личные данные</p>
    <p><%= link_to "Заполнить", new_myprofile_info_path, class: 'btn btn-primary btn' %> </p>
+
 
 <% end %>
