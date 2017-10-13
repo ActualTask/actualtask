@@ -1,12 +1,13 @@
 
-<h1>All Tasks</h1>
+<h2>All Tasks</h2>
 <div class="row row-padding">
 
+  <div class="col-lg-3 col-md-3 col-sm-12 center-block">
   <%= form_tag(tasks_path, method: :get) do %>
       <%= collection_select :location, :term, Location.select(:city).group(:city), :city, :city, {}, class:'form-control' %>
-      <%= submit_tag 'Search', title: nil %>
+      <%= submit_tag 'Поиск', class: "btn btn-primary navbar-btn" %>
   <% end %>
-
+  </div>
   <% @tasks.each do |t| %>
 
       <div class=" col-lg-3 col-md-3 col-sm-6  col-padding">
