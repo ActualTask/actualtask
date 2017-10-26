@@ -1,21 +1,45 @@
-<article class="task">
-  <section class="task-head">
-    <h1><%= @customer_task.title %></h1>
-
-    <%= task_map @customer_task %>
-    <p align="right"><%= @customer_task.price %></p>
-
-    <small>
-      <%= task_info @customer_task %>
-    </small>
-  </section>
+<div class="container-fluid">
+  <h1><span class="big-price"><%= @customer_task.price %></span><%= @customer_task.title %></h1>
 
 
+  <div class="taskmap">
+
+  <%= task_map @customer_task %>
+  </div>
+
+  <div class="customer">
+    <%=link_to info_path(@customer_task.user.info) do %>
+        <div class="avatar">
+          <% if @customer_task.user.info.avatar.present? %>
+
+              <%= image_tag @customer_task.user.info.avatar.url(:thumb), class: 'avatar' %>
+          <% end %>
+    <% end %>
+    </div>
+
+    <div class="name"><%= link_to @customer_task.user.info.name+' '+@customer_task.user.info.surname, info_path(@customer_task.user.info)  %></div>
+  </div>
+
+  <div class="adress">
+    <div style="font-weight: bold">Адрес: </div>
+    <div class="from">От: <span class="from-adress">Улица хуюлица</span></div>
+    <div class="to">До: <span class="to-adress">Улица хуюлица 2</span></div>
+    <div class="distance">Расстояние: <span class="dist-number">64 метра</span></div>
+  </div>
+
+  <div class="deadline">
+    <div style="font-weight: bold">Сроки</div>
+    <div class="start">Начать: <span><%= @customer_task.start_time %></span></div>
+    <div class="end">Завершить: <span><%=@customer_task.end_time  %></span></div>
+  </div>
+
+  <div class="price">Стоимость: <span><%=@customer_task.price  %> р</span></div>
+  <div class="payment">Оплата: <span>Наличными</span></div>
+  <div class="details">Подробности: <span><%= @customer_task.body.html_safe %></span></div>
+</div>
+</div>
 
 
-  <section class="post-body">
-    <%= @customer_task.body.html_safe %>
-  </section>
 
 </article>
 
@@ -34,6 +58,12 @@
   <h2>Отклики</h2>
         <selection class="task-input">
 
+          <%if @customer_task.performer_id!=nil%>
+
+              <h3>Вы выбрали исполнителя</h3>
+
+              <% else %>
+
 
   <% @customer_task.response_lists.each_with_index do |res, index| %>
           <tr>
@@ -51,10 +81,13 @@
 
 </article>
                 <p></p>
+              <% if @customer_task.performer_id==nil %>
     <div class="form-group">
       <%= link_to 'Принять', myprofile_task_accept_response_path(@customer_task,:response => {:id => res}), :method => :put, class: 'btn btn-primary' %>
       <%= link_to 'Отклонить', myprofile_task_decline_response_path(@customer_task,:response => {:id => res}), :method => :put, class: 'btn btn-outline-secondary' %>
     </div>
+                  <% end %>
+                  <% end%>
 
 
 <% end %>

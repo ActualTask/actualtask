@@ -1,19 +1,48 @@
-<article class="task">
-  <section class="task-head">
-    <h1><%= @task.title %></h1>
+    <div class="container-fluid">
+      <h1><span class="big-price"><%= @task.price %></span><%= @task.title %></h1>
 
 
-    <div class="map">
+
+    <div class="taskmap">
       <%= task_map @task %>
     </div>
 
-    <p align="right"><%= @task.price %> руб</p>
 
-    <small>
-      <%= task_info @task %>
+      <div class="customer">
+        <%=link_to info_path(@task.user.info) do %>
+        <div class="avatar">
+          <% if @task.user.info.avatar.present? %>
 
-    </small>
-  </section>
+              <%= image_tag @task.user.info.avatar.url(:thumb), class: 'avatar' %>
+              <% end %>
+        <% end %>
+        </div>
+
+        <div class="name"><%= link_to @task.user.info.name+' '+@task.user.info.surname, info_path(@task.user.info)  %></div>
+      </div>
+
+      <div class="adress">
+        <div style="font-weight: bold">Адрес: </div>
+        <div class="from">От: <span class="from-adress">Улица хуюлица</span></div>
+        <div class="to">До: <span class="to-adress">Улица хуюлица 2</span></div>
+        <div class="distance">Расстояние: <span class="dist-number">64 метра</span></div>
+      </div>
+
+      <div class="deadline">
+        <div style="font-weight: bold">Сроки</div>
+        <div class="start">Начать: <span><%= @task.start_time %></span></div>
+        <div class="end">Завершить: <span><%=@task.end_time  %></span></div>
+      </div>
+
+      <div class="price">Стоимость: <span><%=@task.price  %> р</span></div>
+      <div class="payment">Оплата: <span>Наличными</span></div>
+      <div class="details">Подробности: <span><%= @task.body.html_safe %></span></div>
+    </div>
+    </div>
+
+
+
+    </div>
 
 
 
@@ -21,9 +50,8 @@
 
 <% end %>
 
-  <section class="post-body">
-    <%= @task.body.html_safe %>
-  </section>
+
+
 </article>
 
 <% if @task.price>500 && !current_user.performer_role?%>
@@ -37,7 +65,7 @@
 <% else %>
 
 
-  <% if @task.user_id!=current_user.id&&current_user.info.present?&&current_user.response_lists==nil %>
+  <% if @task.user_id!=current_user.id&&current_user.info.present? %>
 
         <%=render 'responses' %>
    <% end %>

@@ -51,9 +51,13 @@
     <% end %>
 
 
-<% if current_user.id==@task.performer_id %>
+<% if current_user.id==@task.performer_id&&@task.task_status!='done' %>
     <%= button_to 'Выполнил', myprofile_job_task_done_path(@task),  class: 'btn btn-primary' %>
     <%= button_to 'Отказаться от задания', myprofile_job_cancel_job_path(@task, 'response_id'=>@response.id), method: :post, class: 'btn btn-primary' %>
+    <% else %>
+
+
+
 <% end %>
 
 
