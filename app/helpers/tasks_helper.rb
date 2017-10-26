@@ -12,10 +12,9 @@ module TasksHelper
 
     info = "<time>#{task.created_at.to_date.strftime('%d %B, %Y')}</time> "
 
-    if task.user.info.present?
-      info += " | "
-      info += link_to task.user.info.name+' '+task.user.info.surname, info_path(task.user.info)
-    end
+
+
+
     if task.category.present?
       info += " | "+(link_to task.category.name, task.category)
     end

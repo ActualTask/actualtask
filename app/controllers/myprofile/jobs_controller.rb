@@ -74,8 +74,7 @@ before_action :authenticate_user!
     if (@response.update_attributes('response_status'=>'response_canceled')&&@task.update_attributes('performer_id' => nil))
       redirect_to myprofile_job_path(@task), success: 'Отклик отозван'
     end
-    else
-      redirect_to myprofile_job_path(@task), error: 'Что-то не так'
+
   end
 
   def cancel_job

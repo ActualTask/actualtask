@@ -72,7 +72,7 @@ Rails.application.configure do
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
-  config.action_mailer.default_url_options = { host: 'actualtask.com' }
+  config.action_mailer.default_url_options = { host: 'actualtask.com', port: 3020 }
   config.action_mailer.delivery_method = :sendmail
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
