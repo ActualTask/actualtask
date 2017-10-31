@@ -19,15 +19,14 @@ class TasksController < ApplicationController
   def index
     @search = Task.search(params[:q])
     @posted_tasks = Task.where(tasks_verified: 'verified')
-    @posted_tasks = if params[:location][:term]
+    @posted_tasks = if params[:location]
                       Task.where(id: Location.where('city=?',params[:location][:term]).select('task_id'))
-             else
-               Task.all
+                    else
+                      Task.all
+                    end
+  end
 
-             end
-end
-
-    def show
+  def show
       if @task.user==current_user
         @responses = @task.response_lists
       else
