@@ -20,17 +20,19 @@
     <div class="name"><%= link_to @customer_task.user.info.name+' '+@customer_task.user.info.surname, info_path(@customer_task.user.info)  %></div>
   </div>
 
-  <div class="adress">
+  <div class="address-box">
     <div style="font-weight: bold">Адрес: </div>
-    <div class="from">От: <span class="from-adress">Улица хуюлица</span></div>
-    <div class="to">До: <span class="to-adress">Улица хуюлица 2</span></div>
-    <div class="distance">Расстояние: <span class="dist-number">64 метра</span></div>
+    <div class="address-list">
+      <% @customer_task.locations.each do |l| %>
+        <span class="address"><%= l.location_name %></span>
+      <% end %>
+    </div>
   </div>
 
   <div class="deadline">
     <div style="font-weight: bold">Сроки</div>
-    <div class="start">Начать: <span><%= @customer_task.start_time %></span></div>
-    <div class="end">Завершить: <span><%=@customer_task.end_time  %></span></div>
+    <div class="start">Начать: <span><%= l @customer_task.start_time, format: :long %></span></div>
+    <div class="end">Завершить: <span><%= l @customer_task.end_time, format: :long %></span></div>
   </div>
 
   <div class="price">Стоимость: <span><%=@customer_task.price  %> р</span></div>

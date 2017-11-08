@@ -1,7 +1,7 @@
 <div class=" col-lg-3 col-md-3 col-sm-6  col-padding">
   <div class="card">
     <div class="title"><a href=""><%=link_to task.title, task_path(task) %></a></div>
-    <div class="deadline">До: <%= task.end_time.to_formatted_s(:short) %></div>
+    <div class="deadline">До: <%= l task.end_time, format: :short %></div>
     <div class="author">
       <%=link_to info_path(task.user.info) do %>
 
