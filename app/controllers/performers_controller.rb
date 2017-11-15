@@ -8,11 +8,9 @@ class PerformersController < ApplicationController
     @performer = Performer.new(performer_params)
     @performer.user_id = current_user.id
     if @performer.save
-      redirect_to root_path, success: 'Данные успешно загружены'
+      redirect_to new_performer_path, success: 'Данные успешно загружены'
     else
       flash.now[:danger] = 'Загрузите фото'
-
-      redirect_to myprofile_infos_path
     end
   end
 

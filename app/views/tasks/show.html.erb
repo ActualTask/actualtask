@@ -40,12 +40,9 @@
       <div class="price">Стоимость: <span><%=@task.price  %> р</span></div>
       <div class="payment">Оплата: <span>Наличными</span></div>
       <div class="details">Подробности: <span><%= @task.body.html_safe %></span></div>
-    </div>
-    </div>
 
 
 
-    </div>
 
 
 
@@ -79,9 +76,12 @@
     <% end %>
     <% end %>
 
+
 <%if current_user.info==nil&&@task.user_id!=current_user.id %>
     <p>Для того чтобы откликнуться на задание, необходимо заполнить личные данные</p>
    <p><%= link_to "Заполнить", new_myprofile_info_path, class: 'btn btn-primary btn' %> </p>
 
 
 <% end %>
+
+    </div>
