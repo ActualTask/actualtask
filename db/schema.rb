@@ -79,15 +79,6 @@ ActiveRecord::Schema.define(version: 20171130132328) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "images", force: :cascade do |t|
-    t.string "avatar_file_name"
-    t.string "avatar_content_type"
-    t.integer "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "infos", force: :cascade do |t|
     t.text "name"
     t.text "surname"
@@ -273,11 +264,6 @@ ActiveRecord::Schema.define(version: 20171130132328) do
     t.integer "moderator_id"
     t.decimal "price"
     t.index ["category_id"], name: "index_tasks_on_category_id"
-  end
-
-  create_table "uploads", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
