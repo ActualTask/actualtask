@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171018165357) do
+ActiveRecord::Schema.define(version: 20171130132328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20171018165357) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
+    t.string "category_translit"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -74,6 +75,15 @@ ActiveRecord::Schema.define(version: 20171018165357) do
     t.string "user_info"
     t.string "app_name"
     t.string "doc_root"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -263,6 +273,11 @@ ActiveRecord::Schema.define(version: 20171018165357) do
     t.integer "moderator_id"
     t.decimal "price"
     t.index ["category_id"], name: "index_tasks_on_category_id"
+  end
+
+  create_table "uploads", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

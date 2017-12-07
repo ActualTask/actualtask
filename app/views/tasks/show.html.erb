@@ -40,9 +40,9 @@
       <div class="price">Стоимость: <span><%=@task.price  %> р</span></div>
       <div class="payment">Оплата: <span>Наличными</span></div>
       <div class="details">Подробности: <span><%= @task.body.html_safe %></span></div>
-
-
-
+      <% if @task.category.present? %>
+          <%= link_to @task.category.name, @task.category %>
+<% end %>
 
 
 
@@ -61,6 +61,10 @@
 
 <% if @task.task_status=='in work' %>
     <h3>Задание уже выполняется </h3>
+
+          <% if @task.performer_id==current_user.id %>
+          <h3> Вы исполнитель задания </h3>
+              <% end %>
 
 <% else %>
 

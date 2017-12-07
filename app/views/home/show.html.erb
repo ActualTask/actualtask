@@ -3,19 +3,29 @@
 <div class="row row-padding">
 
   <div class="col-lg-3 col-md-3 col-sm-12 center-block">
-  <%= form_tag(tasks_path, method: :get) do %>
+  <%= form_tag(myprofile_tasks_path, method: :get) do %>
       <%= collection_select :location, :term, Location.select(:city).group(:city), :city, :city, {}, class:'form-control' %>
       <%= submit_tag 'Поиск', class: "btn btn-primary navbar-btn" %>
   <% end %>
   </div>
+
   <% @tasks.each do |t| %>
 
       <div class=" col-lg-3 col-md-3 col-sm-6  col-padding">
         <div class="card">
+          <% if t.category.present? %>
+              <%= link_to t.category.name, tasks_by_category_path(t.category.category_translit) %>
+          <% end %>
+
+          <%if t.user_id==current_user %>
+              <div class="title"><a href=""><%=link_to t.title, myprofile_tasks_path(@customer_task) %></a></div>
+              <% else %>
           <div class="title"><a href=""><%=link_to t.title, task_path(t) %></a></div>
+              <% end %>
           <div class="deadline">До: <%= t.end_time.to_formatted_s(:short) %></div>
+
           <div class="author">
-            <%=link_to info_path(t.user.info) do %>
+            <%=link_to myprofile_info_path(t.user.info) do %>
 
                 <div class="author-photo">
                   <% if t.user.info.avatar? %>
@@ -24,8 +34,11 @@
                       <%= image_tag ("fa-01.png") %>
                   <% end %>
                 </div>
+                <%  if t.user.info!=current_user.info %>
                 <div class="author-name"><%= link_to t.user.info.name+' '+t.user.info.surname, info_path(t.user.info)  %></div>
-
+                  <% else %>
+                    <div class="author-name"><%= link_to t.user.info.name+' '+t.user.info.surname, myprofile_infos_path  %></div>
+                <% end %>
             <% end %>
           </div>
           <div class="map">

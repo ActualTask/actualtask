@@ -30,6 +30,9 @@ ru:
         response_text: 'Отзыв'
         responces: 'Отзыв'
         performer_price: 'Ваша цена'
+      category:
+        name: 'Название'
+        parent_id: 'Родитель'
     errors:
       messages:
         blank: 'не может быть пустым'

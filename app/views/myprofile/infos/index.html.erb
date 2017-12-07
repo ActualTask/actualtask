@@ -32,7 +32,7 @@
     <div class="pc-photo pull-left">
       <% if current_user.info.avatar.present? %>
 
-    <%= image_tag current_user.info.avatar.url(:thumb), class: 'ipc-photo pull-left' %>
+    <%=image_tag current_user.info.avatar.url(:thumb), class: 'ipc-photo pull-left' %>
     </div>
           <% end %>
     <div class="pc-info pull-left">

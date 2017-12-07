@@ -19,14 +19,14 @@ gem 'ransack'
 gem 'jquery-ui-rails'
 gem 'public_activity'
 gem 'rails_exception_handler', "~> 2"
+gem 'paperclip'
+gem 'dropzonejs-rails'
 
 
 
 gem 'ancestry'
 gem 'rails-assets-tether', '>= 1.3.3'
 gem 'rails', '~> 5.1.1'
-gem 'omniauth-google-oauth2'
-gem 'omniauth'
 gem 'rails-i18n', '~> 5.0.0'
 
 gem 'omniauth-accounts'
@@ -36,7 +36,7 @@ gem 'acts_as_commentable_with_threading'
 gem 'closure_tree'
 
 gem 'filterrific'
-gem 'will_paginate'
+gem 'will_paginate', '3.1.0'
 gem 'redis'
 gem 'therubyracer'
 gem 'execjs'
@@ -73,6 +73,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'nested_form_fields'
 gem 'onliner'
+gem "omniauth-google-oauth2", "~> 0.2.1"
+
 
 
 # Use Redis adapter to run Action Cable in production

@@ -1,29 +1,7 @@
 ru:
-  common:
-  tasks:
-    form:
-    responses: 'Отклики'
-
-
-    errors: 'При заполнении формы возникли ошибки'
-    back: 'Назад'
-    create: 'Создать'
-    edit: 'Изменить'
-  will_paginate:
-    previous_label: '&larr; Туда'
-    next_label: 'Сюда &rarr;'
-  tasks:
-    index:
-      title: 'Задания'
-  admin:
-    tasks:
-      new:
-        title: 'Новое задание'
-      edit:
-        title: 'Редактирование задания'
-      form:
-        submit:
-          '%{action} задание'
+    will_paginate:
+      previous_label: '&larr; Туда'
+      next_label: 'Сюда &rarr;'
     categories:
       index:
         title: 'Категории'

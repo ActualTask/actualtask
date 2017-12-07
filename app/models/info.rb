@@ -15,5 +15,6 @@ class Info < ApplicationRecord
     end
   end
 
+
   after_validation :geocode
 end

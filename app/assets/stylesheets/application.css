@@ -2,9 +2,11 @@
 /*
 *= require_tree
 *= require_self
+ *= require dropzone/dropzone
 *= require trix
 *= require jquery-ui
 *= require custom_bootstrap/custom_bootstrap
+
 */
 
 /*@import "bootstrap";*/

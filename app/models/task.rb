@@ -5,6 +5,8 @@ class Task < ApplicationRecord
   validate :task_price_more_than_permited
   mount_uploaders :attachments, AttachmentsUploader
 
+  scope :by_category, -> (category_translit) {where category_id: Category.where(category_translit:category_translit)}
+
   scope :sorted_by, lambda { |sort_option|
     # extract the sort direction from the param value.
     direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'

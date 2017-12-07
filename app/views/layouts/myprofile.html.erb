@@ -7,6 +7,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
 
+
   <% if (params[:action]=="edit"||params[:action]=="new")&&params[:controller]=="myprofile/infos" %>
     <%= javascript_include_tag 'infos.js'  %>
   <% end %>
@@ -15,6 +16,7 @@
       <%= javascript_include_tag 'tasks.js'  %>
   <% end %>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6YQnOEM4h6Yw2T32NNj7eMHEPBpY1RQw&libraries=places"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 
 <body  style="padding-top: 50px;">
