@@ -44,12 +44,16 @@
 
     root 'tasks#index'
 
+
+
     namespace :blog do
       resources :posts
       resources :pictures, only: [:create, :destroy]
       resources :post_tags, only: [:show]
 
     end
+
+
 
     resources :tasks do
       patch 'add_response', action: :add_response, controller: 'tasks'
@@ -59,11 +63,7 @@
     #custom route for task_controller.responses
 
 
-    get 'auth/:provider/callback', to: 'sessions#create'
-    get 'auth/failure', to: redirect('/')
-    get 'signout', to: 'sessions#destroy', as: 'signout'
 
-    resources :sessions, only: [:create, :destroy]
     resources :activities
     resources :tags, only: [:show]
     resources :categories

@@ -53,6 +53,10 @@ class TasksController < ApplicationController
     end
   end
 
+  def has_response
+    response_lists.where('performer_id=?',user.id).present?
+  end
+
 
   def add_response
     current_user.performer_role?

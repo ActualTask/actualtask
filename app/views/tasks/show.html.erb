@@ -68,11 +68,11 @@
 
 <% else %>
 
-
-  <% if @task.user_id!=current_user.id&&current_user.info.present? %>
+  <% if @task.user_id!=current_user.id%>
 
         <%=render 'responses' %>
    <% end %>
+
     <% if @responses.present? %>
         <% @responses.each do |r| %>
           <%= render r %>
