@@ -1,17 +1,9 @@
 <div class="container-fluid">
 
+<h1> Ваши работы</h1>
 
 
-<h1><%= t('.title') %></h1>
-
-<section id='tasks'>
-  <%= render  @tasks %>
-</section>
-
-
-<section id='tasks'>
   <%= render  @responded_tasks %>
-</section>
 
 <%= will_paginate @tasks, renderer: 'BootstrapPaginationHelper::LinkRenderer' %>
 

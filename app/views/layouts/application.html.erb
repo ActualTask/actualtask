@@ -47,7 +47,7 @@
 
 
             <div class="btn-toolbar pull-right">
-              <div class="author-photo">
+              <div style="padding-top: 10px" class="author-photo ">
                 <% if current_user.info.avatar? %>
                     <%=  image_tag current_user.info.avatar.url(:thumb)   %>
                     <% end %>

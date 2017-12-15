@@ -1,6 +1,8 @@
  Rails.application.routes.draw do
 
 
+  get 'welcome/index'
+
   get 'images/index'
 
   get 'images/create'
@@ -14,6 +16,8 @@
   get 'pictures/create'
 
   get 'activities/index'
+
+
 
   resources :activities
   mount ActionCable.server => '/cable'
@@ -32,6 +36,8 @@
 
 
   get 'home/show'
+  get 'welcome/index'
+
   match '/anketa', to: 'infos#new', via:'get'
 
 
@@ -73,6 +79,7 @@
     resources :disputes do
     resource :dispute_users
     resources :messages
+
       end
     namespace :myprofile do
       resources :infos, except: [:destroy]

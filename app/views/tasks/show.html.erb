@@ -66,18 +66,21 @@
           <h3> Вы исполнитель задания </h3>
               <% end %>
 
-<% else %>
+      <% end %>
+
+
+
+
 
   <% if @task.user_id!=current_user.id%>
 
-        <%=render 'responses' %>
+        <%=render 'responses' if !@task.has_response(current_user) %>
    <% end %>
 
     <% if @responses.present? %>
         <% @responses.each do |r| %>
           <%= render r %>
         <% end %>
-    <% end %>
     <% end %>
 
 

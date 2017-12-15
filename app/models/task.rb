@@ -90,11 +90,21 @@ class Task < ApplicationRecord
     end
   end
 
+
+  def has_response(user)
+    response_lists.where('performer_id=?', user.id).present?
+
+
+  end
+
   private
 
   def render_message(message)
     MessagesController.render partial: 'messages/message', locals: {message: message}
   end
+
+
+
 
   def task_price_more_than_permited
     if price>500 && !user.performer_role?

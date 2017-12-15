@@ -6,6 +6,7 @@ class TasksController < ApplicationController
 
 
 
+
   before_action :authenticate_user!
 
   before_action :check_info, only: [:create, :new, :update]
@@ -56,14 +57,13 @@ class TasksController < ApplicationController
     end
   end
 
-  def has_response
-    response_lists.where('performer_id=?',user.id).present?
-  end
+
 
 
   def add_response
     current_user.performer_role?
     @task = Task.find(response_params[:task_id])
+
     @response = ResponseList.new(response_params)
 
     @response.response_status = 'created'
