@@ -63,11 +63,12 @@
           <%if @customer_task.performer_id!=nil%>
 
               <h3>Вы выбрали исполнителя</h3>
+              <div>@customer_task.performer_id.info.name</div>
 
           <% else %>
 
 
-  <% @customer_task.user.response_lists.each_with_index do |res, index| %>
+  <% @customer_task.response_lists.each_with_index do |res, index| %>
           <tr>
             <td><%= index + 1 %></td>
             <td><%= link_to res.user.info.name+' '+res.user.info.surname, info_path(res.user.info)  %></td>

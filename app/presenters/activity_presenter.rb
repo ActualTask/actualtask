@@ -7,7 +7,7 @@ class ActivityPresenter < SimpleDelegator
   end
 
   def render_activity
-      link_to(activity.user.info.name, info_path(activity.user.info)) + " " + render_partial
+    link_to activity.trackable, activity.trackable
   end
 
   def render_partial
@@ -17,16 +17,7 @@ class ActivityPresenter < SimpleDelegator
   end
 
   def partial_path
-    partial_paths.detect do |path|
-      lookup_context.template_exists? path, nil, true
-    end || raise("No partial found for activity in #{partial_paths}")
+    "activities/#{activity.trackable_type.underscore}/#{activity.action}"
   end
 
-  def partial_paths
-    [
-        "activities/#{activity.trackable_type.underscore}/#{activity.action}",
-        "activities/#{activity.trackable_type.underscore}",
-        "activities/activity"
-    ]
-  end
 end

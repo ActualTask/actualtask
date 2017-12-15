@@ -3,6 +3,9 @@ class TasksController < ApplicationController
 
   add_flash_types :error
 
+
+
+
   before_action :authenticate_user!
 
   before_action :check_info, only: [:create, :new, :update]
@@ -127,6 +130,7 @@ class TasksController < ApplicationController
       redirect_to(new_myprofile_info_path, {:flash => { :error => "Заполните информацию о себе!" }})
     end
   end
+
 
 
   end

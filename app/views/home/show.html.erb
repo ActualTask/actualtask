@@ -18,7 +18,7 @@
           <% end %>
 
           <%if t.user_id==current_user %>
-              <div class="title"><a href=""><%=link_to t.title, myprofile_tasks_path(@customer_task) %></a></div>
+              <div class="title"><a href=""><%=link_to t.title, myprofile_tasks_path(@customer_task) %></a> </div>
               <% else %>
           <div class="title"><a href=""><%=link_to t.title, task_path(t) %></a></div>
               <% end %>

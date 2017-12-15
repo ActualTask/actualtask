@@ -12,7 +12,7 @@
         |
         <%= link_to task.category.name, task.category %>
       <% end %>
-      |
+
       <% if user_signed_in?&&current_user.id==task.user_id &&task.performer_id==nil%>
         |
         <%= link_to 'Изменить', edit_myprofile_task_path(task) %>
