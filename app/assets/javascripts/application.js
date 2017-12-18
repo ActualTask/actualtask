@@ -19,5 +19,22 @@
 //= require trix
 //= require twitter/bootstrap
 //= require nested_form_fields
-// require_tree .
+//= require dropzone
+//= require pagination
+$(document).on('turbolinks:load',function(){
+    // disable auto discover
+    Dropzone.autoDiscover = false;
 
+    if($('.dropzone').length>0){
+        var dropzone = new Dropzone (".dropzone", {
+            maxFilesize: 256, // Set the maximum file size to 256 MB
+            paramName: "image[avatar]", // Rails expects the file upload to be something like model[field_name]
+            addRemoveLinks: false // Don't show remove links on dropzone itself.
+        });
+
+        dropzone.on("success", function(file) {
+            this.removeFile(file)
+            $.getScript("/images")
+        });
+    }
+});

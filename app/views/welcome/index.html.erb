@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap 101 Template</title>
+
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body style="padding-top: 0px; background-color: #eeeeee; position: relative">
+<div class="container-fluid">
+  <nav class="lp-navbar lp-navbar-white navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          <img src="images/logo-white.png" alt="" height="30">
+        </a>
+        <a class="navbar-brand beta">beta</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class=""><a href="#">Заказы</a></li>
+          <li><a href="#">Исполнители</a></li>
+          <li><a href="#">Оставить отзыв</a></li>
+        </ul>
+        <div class="btn-toolbar pull-right">
+          <div class="btn-group">
+            <a href="#" class="btn btn-default navbar-btn">Стать исполнителем</a>
+          </div>
+          <div class="btn-group">
+            <a href="#" role="button" class="btn btn-default navbar-btn">Войти</a>
+          </div>
+        </div>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+</div>
+<div class="lp-cf container-fluid">
+  <div class="row lp-blocks lp-block01">
+    <div class="block01-left pull-left col-lg-5 col-md-5 col-sm-5">
+      <h1>ВРЕМЯ - ДЕНЬГИ</h1>
+      <h2>ВЫБИРАЙ, ЧТО НУЖНЕЕ! (В ДАННЫЙ МОМЕНТ)</h2>
+      <div class="btn-toolbar">
+        <div class="btn-group">
+          <a href="#" class="btn btn-default navbar-btn lp-btn">ХОЧУ ЗАРАБОТАТЬ!</a>
+        </div>
+        <div class="btn-group">
+          <a href="#" role="button" class="btn btn-default navbar-btn lp-btn">ОСВОБОДТЬ ВРЕМЯ!</a>
+        </div>
+      </div>
+    </div>
+    <div class="block01-right pull-right col-lg-7 col-md-7 col-sm-7">
+      <img src="images/cointime-06.png" alt="">
+    </div>
+  </div>
+  <div class="lp-blocks lp-block02">
+    <div class="block02-text">
+      <h1>Пара слов о проекте Actual Task - дружелюбном помошнике</h1>
+      <p>В первую очередь проект создавался для помощи людям. Дружелюбный посредник в поиске того, кто выполнит поручение. От уборки в доме до доставки дорогостоящего груза.</p>
+      <p>Для этого провели анализ подобных сайтов. К сожалению на них требовали пополнить счет до начала работы, брали деньги за размещение задания или настаивали на загрузке паспортных данных.</p>
+      <p>Наша цель - сделать удобный, максимально простой, приятный ресурс. Без скрытых процентов, без требований, чтобы действие пользователей было их собственным решением, а не системы.</p>
+      <p>Дальнейшая разработка и внедрение новых функций не прекращается ни на минуту, но уверены что уже сейчас Actual Task станет вам другом и верным помощником.</p>
+    </div>
+  </div>
+  <div class="lp-blocks lp-block03">
+    <div class="block-features">
+      <h1>Основные преимущества Actual Task</h1>
+      <div class="row lp-features">
+        <div class="lp-feature01 col-lg-4 col-md-4 col-sm-4">
+          <div class="lp-feature01-inner">
+            <img src="/images/securty-07.png" alt="">
+            <h4>Безопасность и выгода</h4>
+            <p>Оплата только выполненой работы. Никаких процентных отчислений сайту.</p>
+          </div>
+        </div>
+        <div class="lp-feature02 col-lg-4 col-md-4 col-sm-4">
+          <div class="lp-feature02-inner">
+            <img src="/images/timepig-07.png" alt="">
+            <h4>Экономия времени</h4>
+            <p>Быстрый поиск по заданиям и исполнителям. Большинство исполителей готовы приступить
+              к выполнению поручения
+              сразу же.</p>
+          </div>
+        </div>
+        <div class="lp-feature03 col-lg-4 col-md-4 col-sm-4">
+          <div class="lp-feature03-inner">
+            <img src="/images/work-07.png" alt="">
+            <h4>Сразу в работу</h4>
+            <p>Начинайте работу сразу же. Без подтверждения личный данных доступны задания с бюджетом до 500 рублей </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lp-blocks lp-block04">
+    <div class="lp-action row">
+      <div class="row lp-actions">
+        <div class="lp-action01 col-lg-6 col-md-6 col-sm-6">
+          <div class="lp-action01-inner">
+            <img src="/images/coin-07.png" alt="">
+            <p>Выбирайте задание из списка, откликайтесь на него и зарабатывайте. Самым активным - бонусы на сайте, приоритет в выборе и показе заданий и многое другое!</p>
+            <a href="#" type="button" class="btn btn-primary btn-lg btn-block lp-btn-money">ХОЧУ ЗАРАБОТАТЬ!</a>
+          </div>
+        </div>
+        <div class="lp-action02 col-lg-6 col-md-6 col-sm-6">
+          <div class="lp-action02-inner">
+            <img src="/images/clock-07.png" alt="">
+            <p>Создайте задание, получите отклик на него и выберите исполнителя - освободите свое время! Самым активным - бонусы, возможность давать задание исполнителю напрямую и прочее.</p>
+            <a href="#" type="button" class="btn btn-primary btn-lg btn-block lp-btn-time">ОСВОБОДИТЬ ВРЕМЯ!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="images/logo-white.png" alt="" height="30">
+    </a>
+    <div class="btn-toolbar pull-right lp-footer">
+      <span>Будьте с нами:</span>
+      <div class="btn-group">
+        <a href="#" class="btn btn-default navbar-btn">
+          <img src="./images/at-vk.svg" alt="" width=18>
+        </a>
+      </div>
+      <div class="btn-group">
+        <a href="#" class="btn btn-default navbar-btn">
+          <img src="./images/at-fb.svg" alt="" width=18>
+        </a>
+      </div>
+      <div class="btn-group">
+        <a href="#" class="btn btn-default navbar-btn">
+          <img src="./images/at-twitter.svg" alt="" width=18>
+        </a>
+      </div>
+      <div class="btn-group">
+        <a href="#" class="btn btn-default navbar-btn">
+          <img src="./images/at-instagram.svg" alt="" width=18>
+        </a>
+      </div>
+      <div class="btn-group">
+        <a href="#" class="btn btn-default navbar-btn">Поддержать проект</a>
+      </div>
+      <div class="btn-group">
+        <a href="#" role="button" class="btn btn-default navbar-btn">Отправить отзыв</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.js"></script>
+<script src="js/changebg.js"></script>
+</body>
+</html>

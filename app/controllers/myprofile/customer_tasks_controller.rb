@@ -42,7 +42,7 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
 
   def accept_response
     if @customer_task.update_attributes('performer_id' => @response.performer_id, )&&@response.update_attributes('response_status' => 'accepted')&&@customer_task.update_attributes('task_status' => 'in work' )
-      @customer_task.user.activities.create action: 'accept_response', trackable: @customer_task
+
 
 
       redirect_to @customer_task, success: set_response_params
@@ -55,7 +55,7 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
 
   def decline_response
     if @customer_task.update_attributes('performer_id'=> nil )&&@response.update_attributes('response_status' => 'declined')
-      @customer_task.user.activities.create action: 'decline_response', trackable: @customer_task
+
       redirect_to @customer_task, success: set_response_params
     else
       flash.now[:danger] = 'Что-то пошло не так'

@@ -1,4 +1,4 @@
-<h1><%= t('.title') %></h1>
+<h1><%= 'Задания' %></h1>
 <% if current_user.admin? %>
 
     <%= link_to 'Создать категорию', admin_categories_path, class: 'btn btn-outline-primary btn-sm' %>
@@ -13,17 +13,27 @@
 
 
 
+    <div class="col-lg-3 col-md-3 col-sm-12 center-block">
+      <%= form_tag(myprofile_tasks_path, method: :get) do %>
+          <%= collection_select :location, :term, Location.select(:city).group(:city), :city, :city, {}, class:'form-control' %>
+          <%= submit_tag 'Поиск', class: "btn btn-primary navbar-btn" %>
+      <% end %>
+    </div>
 
 
 
+<section id="tasks">
 
 
+  <%= render @tasks %>
 
-
-  <%= render @posted_tasks %>
 
 
 </section>
+
+
+      <%= will_paginate @tasks%>
+
 
 
 

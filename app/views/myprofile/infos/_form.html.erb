@@ -45,8 +45,9 @@
     </div>
 
     <div class="form-group">
+      <img src="<%= @info.avatar.file.present? ? @info.avatar.url : '#' %>" alt="" id="avatar_preview">
       <%= f.label :avatar %>
-      <%= f.file_field :avatar %>
+      <%= f.file_field :avatar, id: 'avatar', type: 'file' %>
       Remove image
       <%= f.check_box :remove_avatar %>
     </div>

@@ -62,12 +62,14 @@
     </div>
 
     <div class="form-group">
-      <%=f.file_field :attachments,  multiple: true %>
-      <%= label_tag :remove_attachments do %>
-          Remove image
-          <%= f.check_box :remove_attachments %>
-      <% end %>
-          </div>
+      <div class="thumb-hover">
+          <img style="width: 100%;" src="<%= @customer_task.attachments.present? ? @customer_task.attachment.url : '#' %>" alt="" id="attachment_preview">
+        <td><%= link_to 'x', data: { confirm: 'Are you sure?' } %></td>
+      </div>
+
+         <%=f.file_field :attachments, id: 'attachments', type: 'file', multiple: true %>
+
+    </div>
 
     <div class="form-group">
       <%= f.submit "Разместить", class: 'btn btn-primary btn' %>

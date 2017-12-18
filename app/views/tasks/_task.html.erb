@@ -1,24 +1,50 @@
 <div class=" col-lg-3 col-md-3 col-sm-6  col-padding">
+  <a href="">
   <div class="card">
-    <div class="title"><a href=""><%=link_to task.title, task_path(task) %></a></div>
+
+
+    <% if task.user_id==current_user.id %>
+        <div class="title"><a href=""><%=link_to task.title, myprofile_tasks_path(@customer_task) %></a></div>
+        <% if task.task_status=='in work' %>
+        <div>Выполняется</div>
+            <% end %>
+        <% else %>
+    <div class="title"><a href=""> <%=link_to task.title, task_path(task) %></a></div>
+        <% if task.task_status=='in work' %>
+            <div>Выполняется</div>
+        <% end %>
+        <% end %>
     <div class="deadline">До: <%= l task.end_time, format: :short %></div>
+    <% if task.category.present? %>
+        <%= link_to task.category.name, tasks_by_category_path(task.category.category_translit) %>
+    <% end %>
+
+<%# Карточка задания %>
     <div class="author">
       <%=link_to info_path(task.user.info) do %>
-
           <div class="author-photo">
-            <% if task.user.info.avatar? %>
+                  <% if task.user.info.avatar? %>
                 <%=  image_tag task.user.info.avatar.url(:thumb)  %>
-            <% else %>
+                  <% else %>
                 <%= image_tag ("fa-01.png") %>
-            <% end %>
+                  <% end %>
           </div>
-          <div class="author-name"><%= link_to task.user.info.name+' '+task.user.info.surname, info_path(task.user.info)  %></div>
+                   <% if task.user.info==current_user.info %>
+              <div class="author-name"><%= link_to task.user.info.name+' '+task.user.info.surname, myprofile_infos_path %></div>
 
+                    <% else %>
+            <div class="author-name"><%= link_to task.user.info.name+' '+task.user.info.surname, info_path(task.user.info)  %></div>
+<% end %>
       <% end %>
     </div>
+
+
     <div class="map">
       <%= task_map task %>
     </div>
+
     <div class="price"><%= task.price %> Руб</div>
+
   </div>
+  </a>
 </div>

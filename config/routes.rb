@@ -1,7 +1,23 @@
  Rails.application.routes.draw do
 
 
+  get 'welcome/index'
+
+  get 'images/index'
+
+  get 'images/create'
+
+  get 'images/index'
+
+  get 'images/create'
+
+  get 'pictures/index'
+
+  get 'pictures/create'
+
   get 'activities/index'
+
+
 
   resources :activities
   mount ActionCable.server => '/cable'
@@ -20,6 +36,9 @@
 
 
   get 'home/show'
+  get 'welcome/index'
+  root 'welcome#index'
+
   match '/anketa', to: 'infos#new', via:'get'
 
 
@@ -30,7 +49,8 @@
 
 
 
-    root 'home#show'
+
+
 
     namespace :blog do
       resources :posts
@@ -39,21 +59,27 @@
 
     end
 
+
+
     resources :tasks do
       patch 'add_response', action: :add_response, controller: 'tasks'
       patch 'add_review', action: :add_review, controller: 'tasks'
-
     end
+    get ':category_translit/tasks', to: 'tasks#index', as: :tasks_by_category
     #custom route for task_controller.responses
+
+
+
     resources :activities
     resources :tags, only: [:show]
-    resources :categories, only: [:show]
+    resources :categories
     resources :infos, only: [:show]
     resources :performers
     resources :comments
     resources :disputes do
     resource :dispute_users
     resources :messages
+
       end
     namespace :myprofile do
       resources :infos, except: [:destroy]
