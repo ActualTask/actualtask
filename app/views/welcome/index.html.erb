@@ -4,19 +4,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Taks</title>
+  <title>Bootstrap 101 Template</title>
 
   <%= csrf_meta_tags %>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
 
-  <%= javascript_include_tag 'changebg.js'  %>
-
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
-
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
@@ -33,54 +30,26 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <% if user_signed_in? %>
-
-            <a class="navbar-brand" href="<%= tasks_path %>">
-              <%= image_tag 'logo-white.png', height: '30' %>
-            </a>
-            <a class="navbar-brand beta">beta</a>
-         <% else %>
-        <a class="navbar-brand" href="<%= root_path %>">
-          <%= image_tag 'logo-white.png', height: '30' %>
-
+        <a class="navbar-brand" href="#">
+          <img src="images/logo-white.png" alt="" height="30">
         </a>
-            <a class="navbar-brand beta">beta</a>
-<% end %>
+        <a class="navbar-brand beta">beta</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class=""><a href="<%=tasks_path %>">Заказы</a></li>
-          <!--<li><a href="#">Исполнители</a></li>-->
-          <li><a href="https://goo.gl/forms/mDY0BxG9ru6TclMK2">Оставить отзыв</a></li>
+          <li class=""><a href="#">Заказы</a></li>
+          <li><a href="#">Исполнители</a></li>
+          <li><a href="#">Оставить отзыв</a></li>
         </ul>
-        <% if user_signed_in? %>
-
-
-            <div class="btn-toolbar pull-right">
-              <div style="padding-top: 10px" class="author-photo ">
-                <% if current_user.info.avatar? %>
-                    <%=  image_tag current_user.info.avatar.url(:thumb)   %>
-                <% end %>
-              </div>
-              <%=  link_to 'Личный Кабинет', myprofile_infos_path, class: "btn btn-default navbar-btn" %>
-
-              <%= link_to 'Новое задание', new_myprofile_task_path, class: "btn btn-default navbar-btn" %>
-              <div class="btn-group">
-                <%= link_to "Выход", destroy_user_session_path, method: :delete, class: "btn btn-default navbar-btn" %>
-              </div>
-            </div>
-
-        <% else %>
         <div class="btn-toolbar pull-right">
           <div class="btn-group">
-            <%= link_to "Стать исполнителем", new_user_registration_path, class: "btn btn-default navbar-btn" %>
+            <a href="#" class="btn btn-default navbar-btn">Стать исполнителем</a>
           </div>
           <div class="btn-group">
-            <%= link_to "Войти", new_user_session_path, class: "btn btn-default navbar-btn" %>
+            <a href="#" role="button" class="btn btn-default navbar-btn">Войти</a>
           </div>
-          <% end %>
         </div>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -93,16 +62,15 @@
       <h2>ВЫБИРАЙ, ЧТО НУЖНЕЕ! (В ДАННЫЙ МОМЕНТ)</h2>
       <div class="btn-toolbar">
         <div class="btn-group">
-       <%= link_to "ХОЧУ ЗАРАБОТАТЬ " , tasks_path, class: "btn btn-default navbar-btn lp-btn"  %>
+          <a href="#" class="btn btn-default navbar-btn lp-btn">ХОЧУ ЗАРАБОТАТЬ!</a>
         </div>
         <div class="btn-group">
-          <%= link_to "ОСВОБОДИТЬ ВРЕМЯ " , new_task_path, class: "btn btn-default navbar-btn lp-btn"  %>
+          <a href="#" role="button" class="btn btn-default navbar-btn lp-btn">ОСВОБОДТЬ ВРЕМЯ!</a>
         </div>
       </div>
     </div>
     <div class="block01-right pull-right col-lg-7 col-md-7 col-sm-7">
       <img src="images/cointime-06.png" alt="">
-      <%= image_tag 'cointime-06.png' %>
     </div>
   </div>
   <div class="lp-blocks lp-block02">
@@ -121,7 +89,6 @@
         <div class="lp-feature01 col-lg-4 col-md-4 col-sm-4">
           <div class="lp-feature01-inner">
             <img src="/images/securty-07.png" alt="">
-            <%= image_tag 'securty-07.png' %>
             <h4>Безопасность и выгода</h4>
             <p>Оплата только выполненой работы. Никаких процентных отчислений сайту.</p>
           </div>
@@ -129,7 +96,6 @@
         <div class="lp-feature02 col-lg-4 col-md-4 col-sm-4">
           <div class="lp-feature02-inner">
             <img src="/images/timepig-07.png" alt="">
-            <%= image_tag 'timepig-07.png' %>
             <h4>Экономия времени</h4>
             <p>Быстрый поиск по заданиям и исполнителям. Большинство исполителей готовы приступить
               к выполнению поручения
@@ -139,9 +105,8 @@
         <div class="lp-feature03 col-lg-4 col-md-4 col-sm-4">
           <div class="lp-feature03-inner">
             <img src="/images/work-07.png" alt="">
-            <%= image_tag 'work-07.png' %>
             <h4>Сразу в работу</h4>
-            <p>Начинайте работу сразу же. Без подтверждения личных данных доступны задания с бюджетом до 500 рублей </p>
+            <p>Начинайте работу сразу же. Без подтверждения личный данных доступны задания с бюджетом до 500 рублей </p>
           </div>
         </div>
       </div>
@@ -153,16 +118,15 @@
         <div class="lp-action01 col-lg-6 col-md-6 col-sm-6">
           <div class="lp-action01-inner">
             <img src="/images/coin-07.png" alt="">
-            <%= image_tag 'coin-07.png' %>
             <p>Выбирайте задание из списка, откликайтесь на него и зарабатывайте. Самым активным - бонусы на сайте, приоритет в выборе и показе заданий и многое другое!</p>
-         <%=  link_to "ХОЧУ ЗАРАБОТАТЬ!", new_task_path, class:"btn btn-primary btn-lg btn-block lp-btn-money" %>
+            <a href="#" type="button" class="btn btn-primary btn-lg btn-block lp-btn-money">ХОЧУ ЗАРАБОТАТЬ!</a>
           </div>
         </div>
         <div class="lp-action02 col-lg-6 col-md-6 col-sm-6">
           <div class="lp-action02-inner">
-            <%= image_tag 'clock-07.png' %>
+            <img src="/images/clock-07.png" alt="">
             <p>Создайте задание, получите отклик на него и выберите исполнителя - освободите свое время! Самым активным - бонусы, возможность давать задание исполнителю напрямую и прочее.</p>
-            <%=  link_to "ОСВОБОДИТЬ ВРЕМЯ!", tasks_path, class:"btn btn-primary btn-lg btn-block lp-btn-money" %>
+            <a href="#" type="button" class="btn btn-primary btn-lg btn-block lp-btn-time">ОСВОБОДИТЬ ВРЕМЯ!</a>
           </div>
         </div>
       </div>
@@ -172,42 +136,43 @@
 <div class="footer">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <%= image_tag 'logo-white.png' , height: '30' %>
+      <img src="images/logo-white.png" alt="" height="30">
     </a>
     <div class="btn-toolbar pull-right lp-footer">
       <span>Будьте с нами:</span>
       <div class="btn-group">
         <a href="#" class="btn btn-default navbar-btn">
-          <!--<img src="./images/at-vk.svg" alt="" width=18>-->
-          <%= image_tag 'at-vk.svg' , width: '18' %>
+          <img src="./images/at-vk.svg" alt="" width=18>
         </a>
       </div>
       <div class="btn-group">
         <a href="#" class="btn btn-default navbar-btn">
-          <!--<img src="./images/at-fb.svg" alt="" width=18>-->
-          <%= image_tag 'at-fb.svg' , width: '18' %>
+          <img src="./images/at-fb.svg" alt="" width=18>
         </a>
       </div>
       <div class="btn-group">
         <a href="#" class="btn btn-default navbar-btn">
-          <!--<img src="./images/at-twitter.svg" alt="" width=18>-->
-          <%= image_tag 'at-twitter.svg' , width: '18' %>
+          <img src="./images/at-twitter.svg" alt="" width=18>
         </a>
       </div>
       <div class="btn-group">
         <a href="#" class="btn btn-default navbar-btn">
-          <!--<img src="./images/at-instagram.svg" alt="" width=18>-->
-          <%= image_tag 'at-instagram.svg' , width: '18' %>
+          <img src="./images/at-instagram.svg" alt="" width=18>
         </a>
       </div>
       <div class="btn-group">
         <a href="#" class="btn btn-default navbar-btn">Поддержать проект</a>
       </div>
       <div class="btn-group">
-        <a href="https://goo.gl/forms/mDY0BxG9ru6TclMK2" role="button" class="btn btn-default navbar-btn">Отправить отзыв</a>
+        <a href="#" role="button" class="btn btn-default navbar-btn">Отправить отзыв</a>
       </div>
     </div>
   </div>
 </div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.js"></script>
+<script src="js/changebg.js"></script>
 </body>
 </html>

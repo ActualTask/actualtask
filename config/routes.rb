@@ -37,6 +37,7 @@
 
   get 'home/show'
   get 'welcome/index'
+  root 'welcome#index'
 
   match '/anketa', to: 'infos#new', via:'get'
 
@@ -48,7 +49,6 @@
 
 
 
-    root 'tasks#index'
 
 
 
