@@ -75,7 +75,7 @@
 }
 .card {
   padding: 8px;
-  background-color: #eee;
+  background-color: #fff;
   border-radius: 4px;
   overflow: hidden;
   & > .title {
@@ -136,7 +136,7 @@
 }
 .card {
   padding: 8px;
-  background-color: #eee;
+  background-color: #fff;
   border-radius: 4px;
   overflow: hidden;
   & > .title {
@@ -212,7 +212,7 @@
 }
 .card {
   padding: 8px;
-  background-color: #eee;
+  background-color: #fff;
   border-radius: 4px;
   overflow: hidden;
   & > .title {
@@ -342,7 +342,7 @@
 //landing
 
 .lp-navbar {
-  background-color: rgba(255,255,255,.25);
+  background-color: #31bebe;
   &-brand {
     background-color: #31bebe;
   }
@@ -364,15 +364,15 @@
 }
 .lp-block01 {
   height: 713px;
-  background: image-url('block01-05.png');
+  background: linear-gradient(70deg, #55e0ab, #0e9cd1);
   padding-top: 88px;
 }
 .lp-block03 {
   margin-top: 16px;
   margin-bottom: 32px;
-  height: 912px;
-  background-image: image-url('block03-06.png');
-  padding-top: 196px;
+  height: 480px;
+  background: linear-gradient(70deg, #55e0ab, #0e9cd1);
+  padding-top: 16px;
 }
 .lp-cf {
   padding-left: 0;
@@ -519,5 +519,19 @@
   }
   .lp-actions {
     padding: 24px 48px;
+  }
+}
+@media (min-width: 1280px) {
+  .lp-block01, .lp-block02, .lp-block03 {
+    padding-left: 256px;
+    padding-right: 256px;
+  }
+  .lp-block04 {
+    padding-left: 128px;
+    padding-right: 128px;
+  }
+  .lp-block03 {
+    padding-top: 16px;
+    height: 480px;
   }
 }

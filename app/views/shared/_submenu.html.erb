@@ -4,8 +4,8 @@
     <% Category.roots.each do |category|%>
 
     <li class="nav-item">
-      <%= link_to category.name, category, class: "nav-link #{'active' if current_page?(category_path(category)) || @post.present? && @post.category == category}" %>
-      <% render 'shared/submenu_categories', categories: category.root.descendants.arrange %>
+      <%= link_to category.name, category, class: "nav-link #{'active' if current_page?(category_path(category)) || @task.present? && @task.category == category}" %>
+      <%= render 'shared/submenu_categories', categories: category.root.descendants.arrange %>
               </li>
               <% end %>
   </ul>

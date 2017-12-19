@@ -22,7 +22,7 @@ class TasksController < ApplicationController
 
   def index
     # @search = Task.search(params[:q])
-    @tasks = Task.paginate(page: params[:page], per_page: 10)
+    @tasks = Task.paginate(page: params[:page], per_page: 16)
     @posted_tasks = Task.where(nil)
     # @posted_tasks = Task.where(tasks_verified: 'verified')
     @posted_tasks = @posted_tasks .where(id: Location.where('city=?',params[:location][:term]).select('task_id')) if params[:location]
