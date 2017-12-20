@@ -25,11 +25,7 @@
       <div class="author">
         <%=link_to info_path(task.user.info) do %>
             <div class="author-photo">
-              <% if task.user.info.avatar? %>
-                  <%=  image_tag task.user.info.avatar.url(:thumb)  %>
-              <% else %>
-                  <%= image_tag ("fa-01.png") %>
-              <% end %>
+              <%= user_avatar(current_user) %>
             </div>
             <% if task.user.info==current_user.info %>
                 <div class="author-name"><%= link_to task.user.info.name+' '+task.user.info.surname, myprofile_infos_path %></div>

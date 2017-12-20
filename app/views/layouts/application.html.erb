@@ -33,7 +33,7 @@
             <a class="navbar-brand beta">beta</a>
         <% else %>
             <a class="navbar-brand" href="<%= root_path %>">
-              <%= image_tag 'logo-white.png', height: '30' %>
+              <%= user_avatar(current_user) %>
 
             </a>
             <a class="navbar-brand beta">beta</a>
