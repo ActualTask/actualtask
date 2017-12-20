@@ -4,19 +4,17 @@
 
 
     <% if task.user_id==current_user.id %>
-        <div class="title"><a href=""><%=link_to task.title, myprofile_tasks_path(@customer_task) %></a></div>
+        <div class="title"><a href=""><%=link_to task.title, myprofile_task_path(task) %></a></div>
         <% if task.task_status=='in work' %>
         <div>Выполняется</div>
             <% end %>
         <% else %>
     <div class="title"><a href=""> <%=link_to task.title, task_path(task) %></a></div>
-        <% if task.task_status=='in work' %>
-            <div>Выполняется</div>
-        <% end %>
         <% end %>
     <div class="deadline">До: <%= l task.end_time, format: :short %></div>
     <% if task.category.present? %>
         <%= link_to task.category.name, tasks_by_category_path(task.category.category_translit) %>
+
     <% end %>
 
 <%# Карточка задания %>
