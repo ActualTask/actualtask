@@ -19,4 +19,15 @@ module ApplicationHelper
     '<iframe width="600" height="450" frameborder="0" style="border:0"
 src="https://www.google.com/maps/embed/v1/undefined?origin=...&q=...&destination=...&center=...&zoom=...&key=..." allowfullscreen></iframe>'
   end
+  def user_avatar(user)
+    avatar_url = 'default-avatar.jpg'
+    if user.info.present?
+      if user.info.avatar?
+        if user.info.avatar.thumb.file.present?
+          avatar_url = current_user.info.avatar.url(:thumb)
+        end
+      end
+    end
+    image_tag avatar_url
+  end
 end
