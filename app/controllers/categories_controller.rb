@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
 
   def show
     console
-    @tasks = Task.where(category_id: [@category.subtree_ids]).paginate(page: params[:page], per_page: 5)
+    @tasks = Task.where(category_id: [@category.subtree_ids]).paginate(page: params[:page])
   end
 
   def new

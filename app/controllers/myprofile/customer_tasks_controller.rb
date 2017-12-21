@@ -13,7 +13,7 @@ class Myprofile::CustomerTasksController < Myprofile::MyprofileController
 
   def index
     @posted_tasks = current_user.tasks
-    @tasks = @posted_tasks.paginate(page: params[:page], per_page: 5)
+    @tasks = @posted_tasks.paginate(page: params[:page])
   end
 
   def show

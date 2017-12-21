@@ -3,7 +3,7 @@
 <div class="row row-padding">
 
   <div class="col-lg-3 col-md-3 col-sm-12 center-block">
-  <%= form_tag(myprofile_tasks_path, method: :get) do %>
+  <%= form_tag(tasks_path, method: :get) do %>
       <%= collection_select :location, :term, Location.select(:city).group(:city), :city, :city, {}, class:'form-control' %>
       <%= submit_tag 'Поиск', class: "btn btn-primary navbar-btn" %>
   <% end %>
