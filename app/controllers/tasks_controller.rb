@@ -25,8 +25,8 @@ class TasksController < ApplicationController
     @tasks = Task.paginate(page: params[:page], per_page: 16)
     @posted_tasks = Task.where(nil)
     # @posted_tasks = Task.where(tasks_verified: 'verified')
-    @posted_tasks = @posted_tasks.where(id: Location.where('city=?',params[:location][:term]).select('task_id')) if params[:location]
-    @posted_tasks = @posted_tasks.by_category(params[:category_translit]) if params[:category_translit]
+    @tasks = @posted_tasks.where(id: Location.where('city=?',params[:location][:term]).select('task_id')) if params[:location]
+    @tasks = @posted_tasks.by_category(params[:category_translit]) if params[:category_translit]
 
   end
 

@@ -26,19 +26,16 @@
                     <% end %>
               </ul>
       </div>
- <% if current_user.info.present? %>
 
 <div class=" col-lg-12 col-md-12 col-sm-12  col-padding">
     <div class="pc-photo pull-left">
-      <% if current_user.info.avatar.present? %>
 
           <%= user_avatar(current_user) %>
 
           </div>
-          <% end %>
     <div class="pc-info pull-left">
 
-
+  <% if current_user.info.present? %>
       <p><%= current_user.info.name+' '+current_user.info.surname  %></p>
       <% if current_user.info.city.present? && current_user.info.country_code.present?%>
 
@@ -47,9 +44,9 @@
       </p>
       <p><%= current_user.info.about %></p>
       <a href=" <%= edit_myprofile_info_path(current_user.info)%>">Редактировать</a>
+          <% end %>
               </div>
         </div>
-      <% end %>
     </div>
 </div>
 
