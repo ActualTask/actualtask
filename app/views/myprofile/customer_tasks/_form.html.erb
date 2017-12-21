@@ -63,7 +63,7 @@
 
     <div class="form-group">
       <div class="thumb-hover">
-          <img style="width: 100%;" src="<%= @customer_task.attachments.present? ? @customer_task.attachment.url : '#' %>" alt="" id="attachment_preview">
+          <img style="width: 100%;" src="<%= @customer_task.attachments.present? ? @customer_task.attachments.url : '#' %>" alt="" id="attachment_preview">
         <td><%= link_to 'x', data: { confirm: 'Are you sure?' } %></td>
       </div>
 
