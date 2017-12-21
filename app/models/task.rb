@@ -114,7 +114,6 @@ class Task < ApplicationRecord
 
   def self.search(term)
     if term
-
       Task.where(id: Location.where('country=?',params[:location][:term]).select('task_id'))
     else
       order('id DESC')
