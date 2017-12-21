@@ -7,13 +7,13 @@
 
 <%= link_to 'Проверить пользователей', moderate_users_path, class: 'btn btn-outline-primary btn-sm' %>
 <%= link_to 'Проверить задания', moderate_tasks_path, class: 'btn btn-outline-primary btn-sm' %>
+<% end %>
 
-<% else %>
 
 
     <div class="container-fluid">
     <div class="col-lg-3 col-md-3 col-sm-12 center-block">
-      <%= form_tag(myprofile_tasks_path, method: :get) do %>
+      <%= form_tag(tasks_path, method: :get) do %>
           <%= collection_select :location, :term, Location.select(:city).group(:city), :city, :city, {}, class:'form-control' %>
           <%= submit_tag 'Поиск', class: "btn btn-primary navbar-btn" %>
       <% end %>
@@ -31,12 +31,10 @@
 </section>
 
 
-<%= will_paginate @tasks%>
 
 
 
 
 
 
-<% end %>
 

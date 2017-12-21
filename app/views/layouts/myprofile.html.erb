@@ -59,9 +59,7 @@
 
             <div class="btn-toolbar pull-right">
               <div style="padding-top: 10px" class="author-photo ">
-                <% if current_user.info.avatar? %>
                     <%= user_avatar(current_user) %>
-                <% end %>
               </div>
               <%=  link_to 'Личный Кабинет', myprofile_infos_path, class: "btn btn-default navbar-btn" %>
 
