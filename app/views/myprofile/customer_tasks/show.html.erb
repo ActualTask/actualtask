@@ -46,17 +46,17 @@
 
 
 </article>
+<div class="container-fluid">
 
 <% if @customer_task.attachments? %>
     <p>Файлы</p>
-    <ul>
 <% @customer_task.attachments.each do |att| %>
-          <li><%= link_to(image_tag(att.thumb.url, alt: 'File'), att.url, target: '_blank') %></li>
-    <% end %>
-      </ul>
+          <%= link_to(image_tag(att.thumb.url, alt: 'File'), att.url, target: '_blank') %>
     <% end %>
 
+    <% end %>
 
+</div>
 <article class="input">
   <% if @customer_task.response_lists!=present? %>
 
